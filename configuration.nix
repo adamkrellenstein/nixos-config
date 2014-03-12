@@ -104,6 +104,7 @@ in {
     pkgs.nix-repl
     pkgs.pavucontrol
     (pkgs.callPackage ./lowprio {})
+    (pkgs.callPackage_i686 ./gcc-arm-embedded {})
     ncd_scripts
   ];
 
