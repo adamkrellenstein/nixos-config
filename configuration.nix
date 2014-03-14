@@ -103,8 +103,17 @@ in {
     pkgs.kde4.ktorrent
     pkgs.nix-repl
     pkgs.pavucontrol
+    pkgs.stlink
+    pkgs.gcc
+    pkgs.clang
+    pkgs.unzip
+    pkgs.gnumake
+    pkgs.python27
+    pkgs.python27Packages.wxPython
+    pkgs.python27Packages.pyserial
     (pkgs.callPackage ./lowprio {})
     (pkgs.callPackage_i686 ./gcc-arm-embedded {})
+    (pkgs.callPackage ./printrun {})
     ncd_scripts
   ];
 
@@ -125,14 +134,17 @@ in {
     "/share/kde4"
   ];
 
-  # Udev rules for VirtualBox.
   services.udev.extraRules = ''
+    # Udev rules for VirtualBox.
     KERNEL=="vboxdrv",    OWNER="root", GROUP="vboxusers", MODE="0660", TAG+="systemd"
     KERNEL=="vboxnetctl", OWNER="root", GROUP="root",      MODE="0600", TAG+="systemd"
     SUBSYSTEM=="usb_device", ACTION=="add", RUN+="${virtualbox}/libexec/virtualbox/VBoxCreateUSBNode.sh $major $minor $attr{bDeviceClass}"
     SUBSYSTEM=="usb", ACTION=="add", ENV{DEVTYPE}=="usb_device", RUN+="${virtualbox}/libexec/virtualbox/VBoxCreateUSBNode.sh $major $minor $attr{bDeviceClass}"
     SUBSYSTEM=="usb_device", ACTION=="remove", RUN+="${virtualbox}/libexec/virtualbox/VBoxCreateUSBNode.sh --remove $major $minor"
     SUBSYSTEM=="usb", ACTION=="remove", ENV{DEVTYPE}=="usb_device", RUN+="${virtualbox}/libexec/virtualbox/VBoxCreateUSBNode.sh --remove $major $minor"
+
+    # Allow user access to some USB devices.
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3748", TAG+="uaccess"
   '';
 
   # NCD.
