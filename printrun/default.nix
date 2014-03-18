@@ -13,7 +13,6 @@ python27Packages.buildPythonPackage rec {
     propagatedBuildInputs = [ python27Packages.wxPython python27Packages.pyserial ];
 
     doCheck = false;
-    noOldAndUnmanageable = true;
 
     postInstall = ''
         for f in $out/share/applications/*.desktop; do

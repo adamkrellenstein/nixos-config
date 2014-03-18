@@ -58,3 +58,18 @@ index f6142bd..c8b8820 100644
                                    '/usr/share/pronterface'])
  
  def configfile(filename):
+diff --git a/setup.py b/setup.py
+index 566d4a4..0fb6fe6 100755
+--- a/setup.py
++++ b/setup.py
+@@ -18,8 +18,8 @@
+ import sys
+ import os
+ from stat import S_IRUSR, S_IWUSR, S_IRGRP, S_IROTH
+-from distutils.core import setup
+-from distutils.command.install import install as _install
++from setuptools import setup
++from setuptools.command.install import install as _install
+ from distutils.command.install_data import install_data as _install_data
+ try:
+     from Cython.Build import cythonize

@@ -44,6 +44,8 @@ in {
   services.xserver.desktopManager.xfce.enable = true;
   hardware.opengl.videoDrivers = ["nvidia"];
   services.xserver.vaapiDrivers = [pkgs.vaapiVdpau];
+  hardware.opengl.driSupport32Bit = true;
+  services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
 
   # Polkit.
   security.polkit.extraConfig = ''
@@ -63,7 +65,7 @@ in {
 
   # Packages.
   environment.systemPackages = [
-    pkgs.chromium
+    pkgs.chromiumWrapper
     pkgs.encfs
     pkgs.screen
     pkgs.unrar
@@ -111,6 +113,7 @@ in {
     pkgs.python27
     pkgs.python27Packages.wxPython
     pkgs.python27Packages.pyserial
+    pkgs.rust
     (pkgs.callPackage ./lowprio {})
     (pkgs.callPackage_i686 ./gcc-arm-embedded {})
     (pkgs.callPackage ./printrun {})
@@ -164,4 +167,16 @@ in {
 
   # Enable PulseAudio.
   hardware.pulseaudio.enable = true;
+
+  # Kernel.
+  boot.kernelPackages = pkgs.linuxPackages_3_13;
+
+  # VirtualBox extension pack.
+  nixpkgs.config.virtualbox.enableExtensionPack = true;
+
+  # Power buttons.
+  services.logind.extraConfig = ''
+    HandlePowerKey=suspend
+    PowerKeyIgnoreInhibited=yes
+  '';
 }
