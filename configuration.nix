@@ -103,6 +103,7 @@ in {
     pkgs.kde4.oxygen_icons
     pkgs.kde4.kdelibs
     pkgs.kde4.ktorrent
+    pkgs.kde4.ark
     pkgs.nix-repl
     pkgs.pavucontrol
     pkgs.stlink
@@ -111,9 +112,6 @@ in {
     pkgs.unzip
     pkgs.gnumake
     pkgs.python27
-    pkgs.python27Packages.wxPython
-    pkgs.python27Packages.pyserial
-    pkgs.rust
     (pkgs.callPackage ./lowprio {})
     (pkgs.callPackage_i686 ./gcc-arm-embedded {})
     (pkgs.callPackage ./printrun {})
@@ -148,6 +146,7 @@ in {
 
     # Allow user access to some USB devices.
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3748", TAG+="uaccess"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="0478", TAG+="uaccess"
   '';
 
   # NCD.
@@ -179,4 +178,8 @@ in {
     HandlePowerKey=suspend
     PowerKeyIgnoreInhibited=yes
   '';
+
+  # Nix daemon priorities.
+  nix.daemonNiceLevel = 19;
+  nix.daemonIONiceLevel = 7;
 }
