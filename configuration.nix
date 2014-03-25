@@ -71,7 +71,7 @@ in {
     pkgs.unrar
     pkgs.p7zip
     pkgs.zip
-    pkgs.firefox
+    pkgs.firefoxWrapper
     pkgs.vlc
     pkgs.kde4.konversation
     pkgs.kde4.kate
@@ -115,18 +115,11 @@ in {
     (pkgs.callPackage ./lowprio {})
     (pkgs.callPackage_i686 ./gcc-arm-embedded {})
     (pkgs.callPackage ./printrun {})
+    pkgs.cura
     ncd_scripts
   ];
 
   nixpkgs.config.packageOverrides = pkgs: {
-    badvpn = (pkgs.callPackage ./nixpkgs/pkgs/tools/networking/badvpn {});
-    kde4 = rec {
-      newCallPackage = pkgs.newScope new_kde4;
-      new_kde4 = let callPackage = newCallPackage; in pkgs.kde4 // rec {
-        kdevplatform = callPackage ./nixpkgs/pkgs/development/libraries/kdevplatform {};
-        kdevelop = callPackage ./nixpkgs/pkgs/applications/editors/kdevelop {};
-      };
-    }.new_kde4;
   };
 
   # Make sure KDE finds its stuff.
