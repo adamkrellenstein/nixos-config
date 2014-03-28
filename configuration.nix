@@ -65,13 +65,13 @@ in {
 
   # Packages.
   environment.systemPackages = [
-    pkgs.chromiumWrapper
+    #pkgs.chromiumWrapper
     pkgs.encfs
     pkgs.screen
     pkgs.unrar
     pkgs.p7zip
     pkgs.zip
-    pkgs.firefoxWrapper
+    pkgs.firefox
     pkgs.vlc
     pkgs.kde4.konversation
     pkgs.kde4.kate
@@ -116,10 +116,12 @@ in {
     (pkgs.callPackage_i686 ./gcc-arm-embedded {})
     (pkgs.callPackage ./printrun {})
     pkgs.cura
+    pkgs.xscreensaver
     ncd_scripts
   ];
 
   nixpkgs.config.packageOverrides = pkgs: {
+    gvfs = pkgs.gvfs.override { lightWeight = false; };
   };
 
   # Make sure KDE finds its stuff.
