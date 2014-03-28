@@ -88,6 +88,7 @@ template network_main {
     mgr->start("vpn_localnet", {});
     mgr->start("virtualbox", {});
     mgr->start("dnsmasq", {});
+    mgr->start("natnet", {});
 }
 
 template connection_lan {
@@ -400,6 +401,33 @@ template virtualbox {
 
     # Run DHCP server.
     call("dhcpd_start", {addr, addr_prefix, dhcp_start, dhcp_end, {addr}, {addr}, "/run/dhcpd-vbox.conf", "/var/lib/dhcpd-vbox.leases"});
+}
+
+template natnet {
+    alias("_caller") main;
+
+    # Config.
+    var("DISABLEDenp2s0") dev;
+    var("192.168.132.1") addr;
+    var("24") addr_prefix;
+    var("192.168.132.100") dhcp_start;
+    var("192.168.132.149") dhcp_end;
+
+    # Wait, up.
+    net.backend.waitdevice(dev);
+    net.up(dev);
+
+    # Weak host model.
+    net.iptables.append("filter", "INPUT", "-d", addr, "!", "-i", dev, "-j", "DROP");
+
+    # Assign IP address.
+    net.ipv4.addr(dev, addr, addr_prefix);
+
+    # Set up NAT.
+    call("nat_rules", {"_caller.main", dev, "0x4"});
+
+    # Run DHCP server.
+    call("dhcpd_start", {addr, addr_prefix, dhcp_start, dhcp_end, {addr}, {addr}, "/run/dhcpd-natnet.conf", "/var/lib/dhcpd-natnet.leases"});
 }
 
 template dnsmasq {
