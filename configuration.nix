@@ -112,8 +112,8 @@ in {
     pkgs.unzip
     pkgs.gnumake
     pkgs.python27
+    pkgs.gcc-arm-embedded
     (pkgs.callPackage ./lowprio {})
-    (pkgs.callPackage_i686 ./gcc-arm-embedded {})
     (pkgs.callPackage ./printrun {})
     pkgs.cura
     pkgs.xscreensaver
