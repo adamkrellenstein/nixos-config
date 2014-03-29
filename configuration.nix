@@ -113,8 +113,8 @@ in {
     pkgs.gnumake
     pkgs.python27
     pkgs.gcc-arm-embedded
+    pkgs.printrun
     (pkgs.callPackage ./lowprio {})
-    (pkgs.callPackage ./printrun {})
     pkgs.cura
     pkgs.xscreensaver
     ncd_scripts
