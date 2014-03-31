@@ -119,6 +119,7 @@ in {
     pkgs.xscreensaver
     pkgs.gemalto-dotnetv2-pkcs11
     pkgs.freetype_hacked
+    pkgs.kde4.kde_workspace
     ncd_scripts
   ];
 
