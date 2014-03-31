@@ -120,6 +120,7 @@ in {
     pkgs.gemalto-dotnetv2-pkcs11
     pkgs.freetype_hacked
     pkgs.kde4.kde_workspace
+    pkgs.libusb
     ncd_scripts
   ];
 
