@@ -118,12 +118,17 @@ in {
     pkgs.cura
     pkgs.xscreensaver
     pkgs.gemalto-dotnetv2-pkcs11
+    pkgs.freetype_hacked
     ncd_scripts
   ];
 
   nixpkgs.config.packageOverrides = pkgs: {
     gvfs = pkgs.gvfs.override { lightWeight = false; };
     gemalto-dotnetv2-pkcs11 = pkgs.callPackage ./gemalto-dotnetv2-pkcs11 {};
+    freetype_hacked = pkgs.freetype.override {
+      useEncumberedCode = true;
+      useInfinality = false;
+    };
   };
 
   # Make sure KDE finds its stuff.
@@ -182,4 +187,9 @@ in {
 
   # Smart card.
   services.pcscd.enable = true;
+
+  # Library hacks.
+  environment.variables.LD_LIBRARY_PATH = [
+    "${pkgs.freetype_hacked}/lib"
+  ];
 }
