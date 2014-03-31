@@ -65,7 +65,7 @@ in {
 
   # Packages.
   environment.systemPackages = [
-    #pkgs.chromiumWrapper
+    pkgs.chromiumBeta
     pkgs.encfs
     pkgs.screen
     pkgs.unrar
