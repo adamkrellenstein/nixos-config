@@ -117,11 +117,13 @@ in {
     (pkgs.callPackage ./lowprio {})
     pkgs.cura
     pkgs.xscreensaver
+    pkgs.gemalto-dotnetv2-pkcs11
     ncd_scripts
   ];
 
   nixpkgs.config.packageOverrides = pkgs: {
     gvfs = pkgs.gvfs.override { lightWeight = false; };
+    gemalto-dotnetv2-pkcs11 = pkgs.callPackage ./gemalto-dotnetv2-pkcs11 {};
   };
 
   # Make sure KDE finds its stuff.
@@ -177,4 +179,7 @@ in {
   # Nix daemon priorities.
   nix.daemonNiceLevel = 19;
   nix.daemonIONiceLevel = 7;
+
+  # Smart card.
+  services.pcscd.enable = true;
 }
