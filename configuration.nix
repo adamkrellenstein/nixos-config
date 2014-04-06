@@ -43,7 +43,6 @@ in {
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
   hardware.opengl.videoDrivers = ["nvidia"];
-  services.xserver.vaapiDrivers = [pkgs.vaapiVdpau];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
 
@@ -121,6 +120,7 @@ in {
     pkgs.freetype_hacked
     pkgs.kde4.kde_workspace
     pkgs.libusb
+    pkgs.kicad
     ncd_scripts
   ];
 
@@ -193,5 +193,16 @@ in {
   # Library hacks.
   environment.variables.LD_LIBRARY_PATH = [
     "${pkgs.freetype_hacked}/lib"
+  ];
+
+  # Fonts.
+  fonts.enableCoreFonts = true;
+  fonts.extraFonts = [
+    pkgs.ubuntu_font_family
+    pkgs.ttf_bitstream_vera
+    pkgs.liberation_ttf
+    pkgs.libertine
+    pkgs.freefont_ttf
+    pkgs.dejavu_fonts
   ];
 }
