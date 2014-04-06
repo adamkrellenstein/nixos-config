@@ -121,6 +121,7 @@ in {
     pkgs.kde4.kde_workspace
     pkgs.libusb
     pkgs.kicad
+    pkgs.gcc-avr-atmel
     ncd_scripts
   ];
 
@@ -151,6 +152,7 @@ in {
     # Allow user access to some USB devices.
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3748", TAG+="uaccess"
     SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="0478", TAG+="uaccess"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2104", TAG+="uaccess"
   '';
 
   # NCD.
