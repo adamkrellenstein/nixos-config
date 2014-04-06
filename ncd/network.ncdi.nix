@@ -132,7 +132,7 @@ template connection_wlan {
     net.backend.rfkill("wlan", dev);
 
     # Connect to wireless network.
-    net.backend.wpa_supplicant(dev, "/etc/wpa_supplicant/all.conf", "${pkgs.wpa_supplicant}/bin/wpa_supplicant", {}) wpa_sup;
+    net.backend.wpa_supplicant(dev, "/etc/wpa_supplicant/all.conf", "${pkgs.wpa_supplicant}/sbin/wpa_supplicant", {}) wpa_sup;
 
     # DHCP configuration.
     net.ipv4.dhcp(dev) dhcp;
