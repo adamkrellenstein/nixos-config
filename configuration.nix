@@ -122,6 +122,8 @@ in {
     pkgs.libusb
     pkgs.kicad
     pkgs.gcc-avr-atmel
+    pkgs.avrdude
+    pkgs.valgrind
     ncd_scripts
   ];
 
