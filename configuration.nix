@@ -26,7 +26,7 @@ in {
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  boot.loader.grub.device = "nodev";
+  boot.loader.grub.device = "/dev/disk/by-id/ata-ST9500420AS_5VJ8FS0Q";
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -120,7 +120,7 @@ in {
     pkgs.freetype_hacked
     pkgs.kde4.kde_workspace
     pkgs.libusb
-    pkgs.kicad
+    #pkgs.kicad
     pkgs.gcc-avr-atmel
     pkgs.avrdude
     pkgs.valgrind
