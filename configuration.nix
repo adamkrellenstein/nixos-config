@@ -209,4 +209,7 @@ in {
     pkgs.freefont_ttf
     pkgs.dejavu_fonts
   ];
+
+  # Disable binary cache, it's insecure.
+  nix.binaryCaches = [];
 }
