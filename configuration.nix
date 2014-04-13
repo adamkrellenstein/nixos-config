@@ -212,4 +212,7 @@ in {
 
   # Disable binary cache, it's insecure.
   nix.binaryCaches = [];
+
+  # Allow "unfree" packages.
+  nixpkgs.config.allowUnfree = true;
 }
