@@ -124,6 +124,7 @@ in {
     pkgs.gcc-avr-atmel
     pkgs.avrdude
     pkgs.valgrind
+    pkgs.gdb
     ncd_scripts
   ];
 
