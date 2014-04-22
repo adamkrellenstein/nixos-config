@@ -124,7 +124,13 @@ in {
     pkgs.gcc-avr-atmel
     pkgs.avrdude
     pkgs.valgrind
+    pkgs.openssl
     pkgs.gdb
+    pkgs.blender
+    pkgs.openscad
+    pkgs.wine
+    pkgs.freecad
+    pkgs.meshlab
     ncd_scripts
   ];
 
@@ -216,4 +222,16 @@ in {
 
   # Allow "unfree" packages.
   nixpkgs.config.allowUnfree = true;
+
+  # Distributed builds.
+  nix.distributedBuilds = true;
+  nix.buildMachines = [
+    {
+      hostName = "192.168.111.146";
+      maxJobs = 6;
+      sshUser = "build";
+      sshKey = "/root/.ssh/id_rsa";
+      system = "x86_64-linux";
+    }
+  ];
 }
