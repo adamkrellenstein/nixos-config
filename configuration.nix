@@ -26,7 +26,6 @@ in {
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/disk/by-id/ata-ST9500420AS_5VJ8FS0Q";
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -77,7 +76,7 @@ in {
     pkgs.kde4.gwenview
     pkgs.kde4.okular
     pkgs.cmake
-    pkgs.liferea
+    #pkgs.liferea
     pkgs.hplip
     pkgs.cryptsetup
     pkgs.gparted
@@ -131,6 +130,7 @@ in {
     pkgs.wine
     pkgs.freecad
     pkgs.meshlab
+    pkgs.iptables
     ncd_scripts
   ];
 
@@ -176,8 +176,9 @@ in {
     };
   };
 
-  # Disable dhcpcd, we use NCD.
+  # Disable some NixOS networking, we use NCD.
   networking.useDHCP = false;
+  networking.firewall.enable = false;
 
   # Enable PulseAudio.
   hardware.pulseaudio.enable = true;
@@ -224,7 +225,7 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   # Distributed builds.
-  nix.distributedBuilds = true;
+  nix.distributedBuilds = false;
   nix.buildMachines = [
     {
       hostName = "192.168.111.146";

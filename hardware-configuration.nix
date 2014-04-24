@@ -8,16 +8,11 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.luks.devices = [
-    { name = "enc-root"; device = "/dev/disk/by-uuid/f35f8624-6607-485d-b59e-76f87fd9a888"; }
-  ];
+  boot.loader.grub.device = "/dev/disk/by-id/ata-TOSHIBA_THNSNJ256GCST_Z31S10ZITSXY";
 
-  boot.initrd.postMountCommands = ''
-    mkdir -p /root-before-bind
-    mount --move $targetRoot /root-before-bind
-    mount -o bind /root-before-bind/Nix/OS $targetRoot
-    umount /root-before-bind
-  '';
+  boot.initrd.luks.devices = [
+    { name = "enc-root"; device = "/dev/disk/by-uuid/8702698e-cc71-4f5c-aaca-e5321c080f9f"; }
+  ];
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" ];
   boot.kernelModules = [ "kvm-intel" ];
@@ -29,15 +24,15 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/906e71f3-84a9-4faa-be0a-46594c64a935";
+    { device = "/dev/disk/by-uuid/6f027d31-26f8-4153-95a3-492cdf9bfcd4";
       fsType = "ext4";
     };
-
+/*
   fileSystems."/mnt/gentoo" =
     { device = "/dev/mapper/enc-root";
       fsType = "ext4";
     };
-
+*/
   swapDevices =
     [];
 
