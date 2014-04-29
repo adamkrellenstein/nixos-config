@@ -131,6 +131,7 @@ in {
     pkgs.freecad
     pkgs.meshlab
     pkgs.iptables
+    pkgs.kde4.kdepim
     ncd_scripts
   ];
 
