@@ -41,7 +41,7 @@ in {
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-  hardware.opengl.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
 
@@ -210,7 +210,7 @@ in {
 
   # Fonts.
   fonts.enableCoreFonts = true;
-  fonts.extraFonts = [
+  fonts.fonts = [
     pkgs.ubuntu_font_family
     pkgs.ttf_bitstream_vera
     pkgs.liberation_ttf
