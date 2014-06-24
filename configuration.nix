@@ -102,6 +102,7 @@ in {
     pkgs.kde4.kdelibs
     pkgs.kde4.ktorrent
     pkgs.kde4.ark
+    pkgs.kde4.kde_runtime
     pkgs.nix-repl
     pkgs.pavucontrol
     pkgs.stlink
@@ -132,6 +133,11 @@ in {
     pkgs.meshlab
     pkgs.iptables
     pkgs.kde4.kdepim
+    pkgs.gnome3.gedit
+    pkgs.cloc
+    pkgs.warzone2100
+    pkgs.zeroad
+    #pkgs.libreoffice
     ncd_scripts
   ];
 
@@ -142,6 +148,7 @@ in {
       useEncumberedCode = true;
       useInfinality = false;
     };
+    warzone2100 = pkgs.warzone2100.override { withVideos = true; };
   };
 
   # Make sure KDE finds its stuff.
@@ -185,7 +192,7 @@ in {
   hardware.pulseaudio.enable = true;
 
   # Kernel.
-  boot.kernelPackages = pkgs.linuxPackages_3_13;
+  boot.kernelPackages = pkgs.linuxPackages_3_14;
 
   # VirtualBox extension pack.
   nixpkgs.config.virtualbox.enableExtensionPack = true;
@@ -204,7 +211,7 @@ in {
   services.pcscd.enable = true;
 
   # Library hacks.
-  environment.variables.LD_LIBRARY_PATH = [
+  environment.sessionVariables.LD_LIBRARY_PATH = [
     "${pkgs.freetype_hacked}/lib"
   ];
 
