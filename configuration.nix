@@ -130,13 +130,14 @@ in {
     pkgs.openscad
     pkgs.wine
     pkgs.freecad
-    pkgs.meshlab
     pkgs.iptables
     pkgs.kde4.kdepim
     pkgs.gnome3.gedit
     pkgs.cloc
     pkgs.warzone2100
     pkgs.zeroad
+    pkgs.patchelf
+    pkgs.rust
     #pkgs.libreoffice
     ncd_scripts
   ];
@@ -243,4 +244,9 @@ in {
       system = "x86_64-linux";
     }
   ];
+
+  # Shell aliases.
+  environment.shellAliases = {
+    ls = "ls --color=tty --si";
+  };
 }
