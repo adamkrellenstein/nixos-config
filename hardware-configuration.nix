@@ -33,8 +33,7 @@
       fsType = "ext4";
     };
 */
-  swapDevices =
-    [];
+  swapDevices = [ { device = "/var/swap"; } ];
 
   nix.maxJobs = 4;
 }

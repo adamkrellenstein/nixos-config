@@ -2,6 +2,8 @@
 
 let
 
+  common = import ./common.nix;
+
   virtualbox = config.boot.kernelPackages.virtualbox;
 
   ncd_scripts = pkgs.buildEnv {
@@ -103,6 +105,8 @@ in {
     pkgs.kde4.ktorrent
     pkgs.kde4.ark
     pkgs.kde4.kde_runtime
+    pkgs.kde4.kdeutils
+    pkgs.kde4.okteta
     pkgs.nix-repl
     pkgs.pavucontrol
     pkgs.stlink
@@ -117,11 +121,9 @@ in {
     pkgs.cura
     pkgs.xscreensaver
     pkgs.gemalto-dotnetv2-pkcs11
-    pkgs.freetype_hacked
     pkgs.kde4.kde_workspace
     pkgs.libusb
     #pkgs.kicad
-    pkgs.gcc-avr-atmel
     pkgs.avrdude
     pkgs.valgrind
     pkgs.openssl
@@ -129,28 +131,23 @@ in {
     pkgs.blender
     pkgs.openscad
     pkgs.wine
-    pkgs.freecad
+    #pkgs.freecad
     pkgs.iptables
     pkgs.kde4.kdepim
     pkgs.gnome3.gedit
     pkgs.cloc
     pkgs.warzone2100
-    pkgs.zeroad
-    pkgs.patchelf
-    pkgs.rust
-    #pkgs.libreoffice
+    pkgs.yacas
+    pkgs.wireshark
+    pkgs.libreoffice
+    pkgs.bossa
     ncd_scripts
   ];
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    gvfs = pkgs.gvfs.override { lightWeight = false; };
-    gemalto-dotnetv2-pkcs11 = pkgs.callPackage ./gemalto-dotnetv2-pkcs11 {};
-    freetype_hacked = pkgs.freetype.override {
-      useEncumberedCode = true;
-      useInfinality = false;
-    };
-    warzone2100 = pkgs.warzone2100.override { withVideos = true; };
-  };
+
+  nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
+    /* Best to have nothing here. */
+  });
 
   # Make sure KDE finds its stuff.
   environment.pathsToLink = [
@@ -208,13 +205,11 @@ in {
   nix.daemonNiceLevel = 19;
   nix.daemonIONiceLevel = 7;
 
+  # Build in chroot.
+  nix.useChroot = true;
+
   # Smart card.
   services.pcscd.enable = true;
-
-  # Library hacks.
-  environment.sessionVariables.LD_LIBRARY_PATH = [
-    "${pkgs.freetype_hacked}/lib"
-  ];
 
   # Fonts.
   fonts.enableCoreFonts = true;
