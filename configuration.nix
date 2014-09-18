@@ -205,6 +205,12 @@ in {
   nix.daemonNiceLevel = 19;
   nix.daemonIONiceLevel = 7;
 
+  # Nix keep build dependencies.
+  nix.extraOptions = ''
+    gc-keep-outputs = true
+    gc-keep-derivations = true
+  '';
+
   # Build in chroot.
   nix.useChroot = true;
 
