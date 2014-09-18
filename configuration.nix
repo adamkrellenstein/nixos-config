@@ -71,7 +71,7 @@ in {
     pkgs.unrar
     pkgs.p7zip
     pkgs.zip
-    pkgs.firefox
+    pkgs.firefoxWrapper
     pkgs.vlc
     pkgs.kde4.konversation
     pkgs.kde4.kate
