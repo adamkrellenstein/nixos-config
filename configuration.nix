@@ -77,6 +77,7 @@ in {
     pkgs.kde4.kate
     pkgs.kde4.gwenview
     pkgs.kde4.okular
+    pkgs.kde4.umbrello
     pkgs.cmake
     #pkgs.liferea
     pkgs.hplip
