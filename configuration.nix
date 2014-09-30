@@ -6,19 +6,7 @@ let
 
   virtualbox = config.boot.kernelPackages.virtualbox;
 
-  ncd_scripts = pkgs.buildEnv {
-    name = "ncd_scripts";
-    paths = map (
-      script_name: pkgs.writeTextFile {
-        name = script_name;
-        destination = "/ncd/${script_name}";
-        text = ((import (./ncd/. + "/${script_name}.nix")) { inherit pkgs; });
-      }
-    ) [
-      "cmdline.ncdi" "main.ncd" "nbd_boot.ncdi" "network.ncdi" "run_process_output.ncdi"
-      "vbox_hostonly.ncdi" "temp_file.ncdi" "dhcpd.ncdi"
-    ];
-  };
+  kde = pkgs.kde4;
 
 in {
   imports = [
@@ -43,6 +31,7 @@ in {
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.desktopManager.kde4.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
@@ -73,11 +62,11 @@ in {
     pkgs.zip
     pkgs.firefoxWrapper
     pkgs.vlc
-    pkgs.kde4.konversation
-    pkgs.kde4.kate
-    pkgs.kde4.gwenview
-    pkgs.kde4.okular
-    pkgs.kde4.umbrello
+    kde.konversation
+    kde.kate
+    kde.gwenview
+    kde.okular
+    kde.umbrello
     pkgs.cmake
     #pkgs.liferea
     pkgs.hplip
@@ -96,18 +85,18 @@ in {
     pkgs.vdpauinfo
     pkgs.pulseaudio
     virtualbox
-    pkgs.kde4.ksnapshot
-    pkgs.kde4.kolourpaint
-    pkgs.kde4.kmag
-    pkgs.kde4.kdevplatform
-    pkgs.kde4.kdevelop
-    pkgs.kde4.oxygen_icons
-    pkgs.kde4.kdelibs
-    pkgs.kde4.ktorrent
-    pkgs.kde4.ark
-    pkgs.kde4.kde_runtime
-    pkgs.kde4.kdeutils
-    pkgs.kde4.okteta
+    kde.ksnapshot
+    kde.kolourpaint
+    kde.kmag
+    kde.kdevplatform
+    kde.kdevelop
+    kde.oxygen_icons
+    kde.kdelibs
+    kde.ktorrent
+    kde.ark
+    kde.kde_runtime
+    kde.kdeutils
+    kde.okteta
     pkgs.nix-repl
     pkgs.pavucontrol
     pkgs.stlink
@@ -122,7 +111,7 @@ in {
     pkgs.cura
     pkgs.xscreensaver
     pkgs.gemalto-dotnetv2-pkcs11
-    pkgs.kde4.kde_workspace
+    kde.kde_workspace
     pkgs.libusb
     #pkgs.kicad
     pkgs.avrdude
@@ -134,7 +123,7 @@ in {
     pkgs.wine
     #pkgs.freecad
     pkgs.iptables
-    pkgs.kde4.kdepim
+    kde.kdepim
     pkgs.gnome3.gedit
     pkgs.cloc
     pkgs.warzone2100
@@ -142,7 +131,7 @@ in {
     pkgs.wireshark
     pkgs.libreoffice
     pkgs.bossa
-    ncd_scripts
+    kde.full
   ];
 
 
@@ -171,21 +160,14 @@ in {
     SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2104", TAG+="uaccess"
   '';
 
-  # NCD.
-  systemd.services.ncd = {
-    description = "NCD";
-    wantedBy = ["multi-user.target"];
-    after = ["syslog.target" "network-setup.service"];
-    path = [pkgs.iproute pkgs.iptables];
-    serviceConfig = {
-      ExecStart = "${pkgs.badvpn}/bin/badvpn-ncd --logger syslog --syslog-ident ncd --loglevel warning --channel-loglevel ncd_log_msg info ${ncd_scripts}/ncd/main.ncd";
-      Restart = "always";
-    };
-  };
-
-  # Disable some NixOS networking, we use NCD.
-  networking.useDHCP = false;
-  networking.firewall.enable = false;
+  # Network Configuration Daemon.
+  networking.ncd.enable = true;
+  networking.ncd.ncdConfDir = ./ncd;
+  networking.ncd.scripts = [
+      "cmdline.ncdi.nix" "main.ncd.nix" "nbd_boot.ncdi.nix" "network.ncdi.nix"
+      "run_process_output.ncdi.nix" "vbox_hostonly.ncdi.nix" "temp_file.ncdi.nix"
+      "dhcpd.ncdi.nix"
+  ];
 
   # Enable PulseAudio.
   hardware.pulseaudio.enable = true;
