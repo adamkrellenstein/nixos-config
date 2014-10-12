@@ -6,7 +6,7 @@ let
 
   virtualbox = config.boot.kernelPackages.virtualbox;
 
-  kde = pkgs.kde4_next;
+  kde = pkgs.kde4;
 
 in {
   imports = [
