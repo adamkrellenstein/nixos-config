@@ -18,7 +18,13 @@ in {
   boot.loader.grub.version = 2;
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
+  services.openssh.extraConfig = ''
+    Match user shared
+        X11Forwarding no
+        AllowTcpForwarding no
+        ForceCommand internal-sftp
+  '';
 
   # Disable cron.
   services.cron.enable = false;
