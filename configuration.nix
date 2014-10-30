@@ -16,6 +16,7 @@ in {
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
+  boot.loader.grub.timeout = 1;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -37,7 +38,7 @@ in {
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.desktopManager.kde4.enable = true;
+  #services.xserver.desktopManager.kde4.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
@@ -110,7 +111,7 @@ in {
     pkgs.clang
     pkgs.unzip
     pkgs.gnumake
-    pkgs.python27
+    pkgs.python27Full
     pkgs.gcc-arm-embedded
     pkgs.printrun
     (pkgs.callPackage ./lowprio {})
@@ -137,7 +138,7 @@ in {
     pkgs.wireshark
     pkgs.libreoffice
     pkgs.bossa
-    kde.full
+    #kde.full
   ];
 
 
