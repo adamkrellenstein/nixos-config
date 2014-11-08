@@ -1,4 +1,4 @@
-{ stdenv, pcsclite, boost, zlib, automake, autoconf, libtool, pkgconfig, fetchsvn }:
+{ stdenv, pcsclite, boost155, zlib, automake, autoconf, libtool, pkgconfig, fetchsvn }:
 stdenv.mkDerivation rec {
   name = "gemalto-dotnetv2-pkcs11";
 
@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     sha256 = "1hv1qp12n6lymjh48g89lg7xkql8wdwhm197s3c8yakpskgq8bpr";
   };
 
-  buildInputs = [ pcsclite boost zlib automake autoconf libtool pkgconfig ];
+  buildInputs = [ pcsclite boost155 zlib automake autoconf libtool pkgconfig ];
 
   preConfigure = "sh autogen.sh";
 

@@ -234,8 +234,7 @@ in {
   };
 
   # NTP.
-  services.ntp.enable = false;
-  services.openntpd.enable = true;
-  services.openntpd.servers = [ "ntp1.arnes.si" "ntp.siol.net" ];
-  systemd.services.openntpd.wantedBy = [ "multi-user.target" ];
+  services.ntp.enable = true;
+  services.ntp.servers = [ "ntp1.arnes.si" "ntp.siol.net" ];
+  systemd.services.ntpd.wantedBy = [ "multi-user.target" ];
 }
