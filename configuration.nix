@@ -61,7 +61,7 @@ in {
 
   # Packages.
   environment.systemPackages = [
-    pkgs.chromiumBeta
+    pkgs.chromium
     pkgs.encfs
     pkgs.screen
     pkgs.unrar
@@ -73,9 +73,7 @@ in {
     kde.kate
     kde.gwenview
     kde.okular
-    kde.umbrello
     pkgs.cmake
-    #pkgs.liferea
     pkgs.hplip
     pkgs.cryptsetup
     pkgs.gparted
@@ -114,21 +112,17 @@ in {
     pkgs.python27Full
     pkgs.gcc-arm-embedded
     pkgs.printrun
-    (pkgs.callPackage ./lowprio {})
     pkgs.cura
     pkgs.xscreensaver
     pkgs.gemalto-dotnetv2-pkcs11
     kde.kde_workspace
     pkgs.libusb
-    #pkgs.kicad
     pkgs.avrdude
     pkgs.valgrind
     pkgs.openssl
     pkgs.gdb
     pkgs.blender
     pkgs.openscad
-    pkgs.wine
-    #pkgs.freecad
     pkgs.iptables
     kde.kdepim
     pkgs.gnome3.gedit
@@ -138,9 +132,7 @@ in {
     pkgs.wireshark
     pkgs.libreoffice
     pkgs.bossa
-    #kde.full
   ];
-
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
     /* Best to have nothing here. */
@@ -240,4 +232,10 @@ in {
   environment.shellAliases = {
     ls = "ls --color=tty --si";
   };
+
+  # NTP.
+  services.ntp.enable = false;
+  services.openntpd.enable = true;
+  services.openntpd.servers = [ "ntp1.arnes.si" "ntp.siol.net" ];
+  systemd.services.openntpd.wantedBy = [ "multi-user.target" ];
 }
