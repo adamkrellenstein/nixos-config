@@ -211,18 +211,6 @@ in {
   # Allow "unfree" packages.
   nixpkgs.config.allowUnfree = true;
 
-  # Distributed builds.
-  nix.distributedBuilds = false;
-  nix.buildMachines = [
-    {
-      hostName = "192.168.111.146";
-      maxJobs = 6;
-      sshUser = "build";
-      sshKey = "/root/.ssh/id_rsa";
-      system = "x86_64-linux";
-    }
-  ];
-
   # Shell aliases.
   environment.shellAliases = {
     ls = "ls --color=tty --si";
