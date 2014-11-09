@@ -85,14 +85,11 @@ in {
     pkgs.fuse
     pkgs.badvpn
     pkgs.psmisc
-    pkgs.libva
-    pkgs.libvdpau
     pkgs.vdpauinfo
     pkgs.pulseaudio
     virtualbox
     kde.ksnapshot
     kde.kolourpaint
-    kde.kmag
     kde.kdevplatform
     kde.kdevelop
     kde.oxygen_icons
@@ -116,12 +113,9 @@ in {
     pkgs.xscreensaver
     pkgs.gemalto-dotnetv2-pkcs11
     kde.kde_workspace
-    pkgs.libusb
     pkgs.avrdude
     pkgs.valgrind
-    pkgs.openssl
     pkgs.gdb
-    pkgs.blender
     pkgs.openscad
     pkgs.iptables
     kde.kdepim
@@ -130,8 +124,9 @@ in {
     pkgs.warzone2100
     pkgs.yacas
     pkgs.wireshark
-    pkgs.libreoffice
+    #pkgs.libreoffice
     pkgs.bossa
+    pkgs.xbmc
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
@@ -172,7 +167,7 @@ in {
   hardware.pulseaudio.enable = true;
 
   # Kernel.
-  boot.kernelPackages = pkgs.linuxPackages_3_14;
+  boot.kernelPackages = pkgs.linuxPackages_3_17;
 
   # VirtualBox extension pack.
   nixpkgs.config.virtualbox.enableExtensionPack = true;
