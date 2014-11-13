@@ -89,6 +89,7 @@ template network_main {
     mgr->start("virtualbox", {});
     mgr->start("dnsmasq", {});
     mgr->start("natnet", {});
+    mgr->start("bbb_interface", {});
 }
 
 template connection_lan {
@@ -463,5 +464,34 @@ template check_reserved_subnets {
     };
     call("nbd_boot_check_reserved_subnet", {"_caller.main.config.nbd_detect", addr});
 }
+
+template bbb_interface {
+    alias("_caller") main;
+
+    # Basic config.
+    var("enp0s26u1u4") dev;
+
+    # Wait for device.
+    net.backend.waitdevice(dev);
+    net.up(dev);
+    net.backend.waitlink(dev);
+
+    # DHCP configuration.
+    net.ipv4.dhcp(dev) dhcp;
+    var(dhcp.addr) addr;
+    var(dhcp.prefix) addr_prefix;
+    var(dhcp.gateway) gateway;
+    var(dhcp.dns_servers) dns_servers;
+
+    # Do not allow reserved networks.
+    call("check_reserved_subnets", {"_caller.main", addr});
+
+    # Weak host model.
+    net.iptables.append("filter", "INPUT", "-d", addr, "!", "-i", dev, "-j", "DROP");
+
+    # Set IP address.
+    net.ipv4.addr(dev, addr, addr_prefix);
+}
+
 
 ''
