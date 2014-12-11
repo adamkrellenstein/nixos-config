@@ -86,7 +86,7 @@ template network_main {
     mgr->start("internet_config", {});
     mgr->start("vpn_tv", {});
     mgr->start("vpn_localnet", {});
-    mgr->start("virtualbox", {});
+    #mgr->start("virtualbox", {});
     mgr->start("dnsmasq", {});
     mgr->start("natnet", {});
     mgr->start("bbb_interface", {});
