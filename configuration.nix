@@ -37,7 +37,6 @@ in {
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.desktopManager.kde4.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
@@ -116,7 +115,6 @@ in {
     pkgs.openscad
     pkgs.iptables
     kde.kdepim
-    pkgs.gnome3.gedit
     pkgs.cloc
     pkgs.warzone2100
     pkgs.yacas
@@ -151,6 +149,7 @@ in {
       "run_process_output.ncdi.nix" "vbox_hostonly.ncdi.nix" "temp_file.ncdi.nix"
       "dhcpd.ncdi.nix"
   ];
+  networking.networkmanager.enable = false;
 
   # Enable PulseAudio.
   hardware.pulseaudio.enable = true;
