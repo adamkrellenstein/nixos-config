@@ -212,4 +212,7 @@ in {
   # VirtualBox.
   services.virtualboxHost.enable = true;
   services.virtualboxHost.addNetworkInterface = false;
+
+  # Time zone.
+  time.timeZone = "CET";
 }
