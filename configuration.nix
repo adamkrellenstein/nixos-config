@@ -64,7 +64,6 @@ in {
     pkgs.unrar
     pkgs.p7zip
     pkgs.zip
-    pkgs.firefoxWrapper
     pkgs.vlc
     kde.konversation
     kde.kate
