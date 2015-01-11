@@ -117,11 +117,12 @@ in {
     kde.kdepim
     pkgs.cloc
     pkgs.warzone2100
-    pkgs.yacas
     pkgs.wireshark
     pkgs.libreoffice
     pkgs.bossa
     pkgs.xbmc
+    pkgs.nixops
+    pkgs.teensy-loader
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
@@ -155,7 +156,7 @@ in {
   hardware.pulseaudio.enable = true;
 
   # Kernel.
-  boot.kernelPackages = pkgs.linuxPackages_3_17;
+  boot.kernelPackages = pkgs.linuxPackages_3_18;
 
   # VirtualBox extension pack.
   nixpkgs.config.virtualbox.enableExtensionPack = true;
