@@ -36,7 +36,6 @@ in {
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.desktopManager.kde4.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
@@ -85,11 +84,9 @@ in {
     pkgs.pulseaudio
     kde.ksnapshot
     kde.kolourpaint
-    kde.kdevplatform
     kde.kdevelop
     kde.oxygen_icons
     kde.kdelibs
-    kde.ktorrent
     kde.ark
     kde.kde_runtime
     kde.kdeutils
@@ -114,8 +111,6 @@ in {
     pkgs.openscad
     pkgs.iptables
     kde.kdepim
-    pkgs.cloc
-    pkgs.warzone2100
     pkgs.wireshark
     pkgs.libreoffice
     pkgs.bossa
