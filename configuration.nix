@@ -39,6 +39,7 @@ in {
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
+  services.xserver.synaptics.enable = true;
 
   # Polkit.
   security.polkit.extraConfig = ''
@@ -210,4 +211,7 @@ in {
 
   # Time zone.
   time.timeZone = "CET";
+
+  # Bluetooth.
+  hardware.bluetooth.enable = true;
 }
