@@ -113,7 +113,6 @@ in {
     pkgs.iptables
     kde.kdepim
     pkgs.wireshark
-    pkgs.libreoffice
     pkgs.bossa
     pkgs.xbmc
     pkgs.nixops
