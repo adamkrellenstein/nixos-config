@@ -408,7 +408,7 @@ template natnet {
     alias("_caller") main;
 
     # Config.
-    var("DISABLEDenp2s0") dev;
+    var("enp2s0") dev;
     var("192.168.132.1") addr;
     var("24") addr_prefix;
     var("192.168.132.100") dhcp_start;
@@ -427,8 +427,26 @@ template natnet {
     # Set up NAT.
     call("nat_rules", {"_caller.main", dev, "0x4"});
 
-    # Run DHCP server.
-    call("dhcpd_start", {addr, addr_prefix, dhcp_start, dhcp_end, {addr}, {addr}, "/run/dhcpd-natnet.conf", "/var/lib/dhcpd-natnet.leases"});
+    process_manager() mgr;
+    mgr->start(@natnet_dhcp, {});
+    mgr->start(@natnet_nbd, {"pi2-a", "5300"});
+    mgr->start(@natnet_nbd, {"pi2-b", "5301"});
+    mgr->start(@natnet_nbd, {"bbb", "5302"});
+}
+
+template natnet_dhcp {
+    alias("_caller") natnet;
+    
+    call("dhcpd_start", {natnet.addr, natnet.addr_prefix, natnet.dhcp_start, natnet.dhcp_end, {natnet.addr}, {natnet.addr}, "/run/dhcpd-natnet.conf", "/var/lib/dhcpd-natnet.leases"});
+}
+
+template natnet_nbd {
+    alias(@_caller) natnet;
+    alias(@_arg0) nbd_name;
+    alias(@_arg1) nbd_port;
+    
+    var({"${pkgs.nbd}/bin/nbd-server", "-d", @concat(natnet.addr, "@", nbd_port), @concat("/var/nbd/", nbd_name, ".raw")}) nbd_cmd;
+    daemon(nbd_cmd, ["username": "my_nbd"]);
 }
 
 template dnsmasq {

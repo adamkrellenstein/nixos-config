@@ -213,4 +213,12 @@ in {
 
   # Bluetooth.
   hardware.bluetooth.enable = true;
+  
+  # User account for NBD servers.
+  users.extraUsers.my_nbd = {
+    description = "Network Block Device servers";
+    isSystemUser = true;
+    group = "my_nbd";
+  };
+  users.extraGroups.my_nbd = {};
 }
