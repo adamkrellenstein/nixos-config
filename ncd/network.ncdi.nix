@@ -446,7 +446,7 @@ template natnet_nbd {
     alias(@_arg1) nbd_port;
     
     var({"${pkgs.nbd}/bin/nbd-server", "-d", @concat(natnet.addr, "@", nbd_port), @concat("/var/nbd/", nbd_name, ".raw")}) nbd_cmd;
-    daemon(nbd_cmd, ["username": "my_nbd"]);
+    daemon(nbd_cmd, [@username: "my_nbd", @retry_time: "1000"]);
 }
 
 template dnsmasq {

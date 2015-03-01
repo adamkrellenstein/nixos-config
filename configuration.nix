@@ -36,6 +36,7 @@ in {
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.desktopManager.kde4.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
@@ -114,7 +115,6 @@ in {
     kde.kdepim
     pkgs.wireshark
     pkgs.bossa
-    pkgs.xbmc
     pkgs.nixops
     pkgs.teensy-loader
   ];
