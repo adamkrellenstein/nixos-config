@@ -27,13 +27,6 @@
     { device = "/dev/disk/by-uuid/6f027d31-26f8-4153-95a3-492cdf9bfcd4";
       fsType = "ext4";
     };
-/*
-  fileSystems."/mnt/gentoo" =
-    { device = "/dev/mapper/enc-root";
-      fsType = "ext4";
-    };
-*/
-  swapDevices = [ { device = "/var/swap"; } ];
 
-  nix.maxJobs = 4;
+  swapDevices = [ { device = "/var/swap"; } ];
 }

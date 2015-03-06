@@ -34,7 +34,7 @@ in {
 
   # Desktop.
   services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.kdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.desktopManager.kde4.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
@@ -115,8 +115,9 @@ in {
     kde.kdepim
     pkgs.wireshark
     pkgs.bossa
-    pkgs.nixops
+    pkgs.nixopsUnstable
     pkgs.teensy-loader
+    kde.kde_gtk_config
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
@@ -190,6 +191,10 @@ in {
 
   # Disable binary cache, it's insecure.
   nix.binaryCaches = [];
+  
+  # Parallel building.
+  nix.buildCores = 4;
+  nix.maxJobs = 2;
 
   # Allow "unfree" packages.
   nixpkgs.config.allowUnfree = true;
