@@ -5,6 +5,7 @@ let
   common = import ./common.nix;
 
   kde = pkgs.kde4;
+  kde5 = pkgs.kde5;
 
 in {
   imports = [
@@ -36,7 +37,8 @@ in {
   services.xserver.enable = true;
   services.xserver.displayManager.kdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.desktopManager.kde4.enable = true;
+  #services.xserver.desktopManager.kde4.enable = true;
+  services.xserver.desktopManager.kde5.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
@@ -66,10 +68,6 @@ in {
     pkgs.p7zip
     pkgs.zip
     pkgs.vlc
-    kde.konversation
-    kde.kate
-    kde.gwenview
-    kde.okular
     pkgs.cmake
     pkgs.hplip
     pkgs.cryptsetup
@@ -84,15 +82,6 @@ in {
     pkgs.psmisc
     pkgs.vdpauinfo
     pkgs.pulseaudio
-    kde.ksnapshot
-    kde.kolourpaint
-    kde.kdevelop
-    kde.oxygen_icons
-    kde.kdelibs
-    kde.ark
-    kde.kde_runtime
-    kde.kdeutils
-    kde.okteta
     pkgs.nix-repl
     pkgs.pavucontrol
     pkgs.stlink
@@ -106,18 +95,23 @@ in {
     pkgs.cura
     pkgs.xscreensaver
     pkgs.gemalto-dotnetv2-pkcs11
-    kde.kde_workspace
     pkgs.avrdude
     pkgs.valgrind
     pkgs.gdb
     pkgs.openscad
     pkgs.iptables
-    kde.kdepim
     pkgs.wireshark
     pkgs.bossa
     pkgs.nixopsUnstable
     pkgs.teensy-loader
-    kde.kde_gtk_config
+    pkgs.steam
+    kde5.okular
+    kde5.gwenview
+    kde5.ksnapshot
+    kde5.kolourpaint
+    kde5.kdepim
+    kde.konversation
+    kde.kdevelop
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
