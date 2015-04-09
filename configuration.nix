@@ -145,7 +145,7 @@ in {
   hardware.pulseaudio.enable = true;
 
   # Kernel.
-  boot.kernelPackages = pkgs.linuxPackages_3_18;
+  boot.kernelPackages = pkgs.linuxPackages_3_19;
 
   # VirtualBox extension pack.
   nixpkgs.config.virtualbox.enableExtensionPack = true;
