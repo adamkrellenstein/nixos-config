@@ -12,8 +12,7 @@
     # Firefox branding.
     firefoxWrapper = wrapFirefox { browser = firefox.override { enableOfficialBranding = true; }; };
 
-    kdeApps_14_12 = kdeApps_14_12.override { kf5 = kf58; };
-    plasma52 = plasma52.override { kf5 = kf58; };
-    kde5 = kf58 // plasma52 // kdeApps_14_12;
+    kf5_stable = kf59;
+    kdeApps_stable = kdeApps_15_04;
   };
 }

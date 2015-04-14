@@ -187,8 +187,8 @@ in {
   nix.binaryCaches = [];
   
   # Parallel building.
-  nix.buildCores = 4;
-  nix.maxJobs = 2;
+  nix.buildCores = 2;
+  nix.maxJobs = 1;
 
   # Allow "unfree" packages.
   nixpkgs.config.allowUnfree = true;
