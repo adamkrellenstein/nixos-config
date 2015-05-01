@@ -113,6 +113,9 @@ in {
     kde5.filelight
     kde.konversation
     kde.kdevelop
+    pkgs.openocd
+    kde.ktorrent
+    pkgs.awscli
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
