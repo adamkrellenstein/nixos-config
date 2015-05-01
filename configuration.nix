@@ -110,6 +110,7 @@ in {
     kde5.ksnapshot
     kde5.kolourpaint
     kde5.kdepim
+    kde5.filelight
     kde.konversation
     kde.kdevelop
   ];
@@ -188,7 +189,7 @@ in {
   
   # Parallel building.
   nix.buildCores = 2;
-  nix.maxJobs = 1;
+  nix.maxJobs = 2;
 
   # Allow "unfree" packages.
   nixpkgs.config.allowUnfree = true;
