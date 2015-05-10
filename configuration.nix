@@ -116,6 +116,9 @@ in {
     pkgs.openocd
     kde.ktorrent
     pkgs.awscli
+    kde5.ark
+    kde5.kcachegrind
+    pkgs.graphviz
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
