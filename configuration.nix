@@ -136,6 +136,9 @@ in {
     SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3748", TAG+="uaccess"
     SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="0478", TAG+="uaccess"
     SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2104", TAG+="uaccess"
+
+    # MTP Samsung Galaxy S5 Mini.
+    SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", ATTR{idProduct}=="6860", SYMLINK+="libmtp", MODE="660", ENV{ID_MTP_DEVICE}="1"
   '';
 
   # Network Configuration Daemon.
@@ -152,7 +155,7 @@ in {
   hardware.pulseaudio.enable = true;
 
   # Kernel.
-  boot.kernelPackages = pkgs.linuxPackages_3_19;
+  #boot.kernelPackages = pkgs.linuxPackages_3_19;
 
   # VirtualBox extension pack.
   nixpkgs.config.virtualbox.enableExtensionPack = true;
