@@ -119,6 +119,7 @@ in {
     kde5.ark
     kde5.kcachegrind
     pkgs.graphviz
+    pkgs.ntfs3g
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
