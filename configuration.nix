@@ -81,7 +81,6 @@ in {
     pkgs.badvpn
     pkgs.psmisc
     pkgs.vdpauinfo
-    pkgs.pulseaudio
     pkgs.nix-repl
     pkgs.pavucontrol
     pkgs.stlink
@@ -120,6 +119,12 @@ in {
     kde5.kcachegrind
     pkgs.graphviz
     pkgs.ntfs3g
+    pkgs.firefoxWrapper
+    kde5.kcalc
+    pkgs.manpages
+    pkgs.posix_man_pages
+    pkgs.pthreadmanpages
+    pkgs.stdmanpages
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
@@ -231,4 +236,7 @@ in {
     group = "my_nbd";
   };
   users.extraGroups.my_nbd = {};
+
+  # Swappiness.
+  boot.kernel.sysctl."vm.swappiness" = 1;
 }
