@@ -25,7 +25,7 @@ template network_config {
     };
 
     var("true") enable_vpntv;
-    var("true") enable_vpnlocal;
+    var("false") enable_vpnlocal;
     var("true") enable_wlan;
 
     var("wlp3s0") wlan_dev;
