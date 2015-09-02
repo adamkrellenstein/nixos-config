@@ -162,7 +162,7 @@ in {
   hardware.pulseaudio.enable = true;
 
   # Kernel.
-  #boot.kernelPackages = pkgs.linuxPackages_3_19;
+  boot.kernelPackages = pkgs.linuxPackages_3_14;
 
   # VirtualBox extension pack.
   nixpkgs.config.virtualbox.enableExtensionPack = true;
@@ -170,7 +170,15 @@ in {
   # Power buttons.
   services.logind.extraConfig = ''
     HandlePowerKey=suspend
+    HandleSuspendKey=suspend
+    HandleHibernateKey=suspend
+    HandleLidSwitch=ignore
+    HandleLidSwitchDocked=ignore
+
     PowerKeyIgnoreInhibited=yes
+    SuspendKeyIgnoreInhibited=yes
+    HibernateKeyIgnoreInhibited=yes
+    LidSwitchIgnoreInhibited=yes
   '';
 
   # Nix daemon priorities.
@@ -240,4 +248,6 @@ in {
 
   # Swappiness.
   boot.kernel.sysctl."vm.swappiness" = 1;
+
+  environment.sessionVariables.NIX_PATH = pkgs.lib.mkForce "nixpkgs=/etc/nixos/nixpkgs:nixos-config=/etc/nixos/configuration.nix";
 }
