@@ -37,8 +37,6 @@ in {
   services.xserver.enable = true;
   services.xserver.displayManager.kdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-  #services.xserver.desktopManager.kde4.enable = true;
-  services.xserver.desktopManager.kde5.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
@@ -229,8 +227,8 @@ in {
   systemd.services.ntpd.wantedBy = [ "multi-user.target" ];
 
   # VirtualBox.
-  services.virtualboxHost.enable = true;
-  services.virtualboxHost.addNetworkInterface = false;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.addNetworkInterface = false;
 
   # Time zone.
   time.timeZone = "CET";
