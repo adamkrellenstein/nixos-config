@@ -5,7 +5,10 @@ let
   common = import ./common.nix;
 
   kde = pkgs.kde4;
-  kde5 = pkgs.kde5;
+  
+  kf5 = pkgs.kf5_stable;
+  plasma5 = pkgs.plasma5_stable.override { inherit kf5; };
+  kdeApps = pkgs.kdeApps_stable.override { inherit kf5; };
 
 in {
   imports = [
@@ -100,29 +103,38 @@ in {
     pkgs.wireshark
     pkgs.bossa
     pkgs.nixopsUnstable
-    pkgs.teensy-loader
+    pkgs.teensy-loader-cli
     pkgs.steam
-    kde5.okular
-    kde5.gwenview
-    kde5.ksnapshot
-    kde5.kolourpaint
-    kde5.kdepim
-    kde5.filelight
     kde.konversation
     kde.kdevelop
     pkgs.openocd
     kde.ktorrent
     pkgs.awscli
-    kde5.ark
-    kde5.kcachegrind
     pkgs.graphviz
     pkgs.ntfs3g
     pkgs.firefoxWrapper
-    kde5.kcalc
     pkgs.manpages
     pkgs.posix_man_pages
     pkgs.pthreadmanpages
     pkgs.stdmanpages
+    pkgs.hicolor_icon_theme
+  ]
+  ++ builtins.filter pkgs.lib.isDerivation (builtins.attrValues kf5)
+  ++ [
+    kdeApps.okular
+    kdeApps.gwenview
+    kdeApps.ksnapshot
+    kdeApps.kolourpaint
+    kdeApps.kdepim
+    kdeApps.filelight
+    kdeApps.ark
+    kdeApps.kcachegrind
+    kdeApps.kcalc
+    kdeApps.kde-wallpapers
+    kdeApps.kde-baseapps
+    kdeApps.kde-runtime
+    kdeApps.konsole
+    kdeApps.oxygen-icons
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
@@ -131,8 +143,7 @@ in {
 
   # Make sure KDE finds its stuff.
   environment.pathsToLink = [
-    "/share/apps"
-    "/share/kde4"
+    "/share"
   ];
 
   services.udev.extraRules = ''
@@ -204,6 +215,7 @@ in {
     pkgs.libertine
     pkgs.freefont_ttf
     pkgs.dejavu_fonts
+    plasma5.oxygen-fonts
   ];
 
   # Disable binary cache, it's insecure.
