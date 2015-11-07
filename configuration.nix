@@ -69,7 +69,6 @@ in {
     pkgs.p7zip
     pkgs.zip
     pkgs.vlc
-    pkgs.cmake
     pkgs.hplip
     pkgs.cryptsetup
     pkgs.gparted
@@ -81,7 +80,6 @@ in {
     pkgs.fuse
     pkgs.badvpn
     pkgs.psmisc
-    pkgs.vdpauinfo
     pkgs.nix-repl
     pkgs.pavucontrol
     pkgs.stlink
@@ -103,7 +101,6 @@ in {
     pkgs.wireshark
     pkgs.bossa
     pkgs.nixopsUnstable
-    pkgs.teensy-loader-cli
     pkgs.steam
     kde.konversation
     kde.kdevelop
@@ -112,7 +109,6 @@ in {
     pkgs.awscli
     pkgs.graphviz
     pkgs.ntfs3g
-    pkgs.firefoxWrapper
     pkgs.manpages
     pkgs.posix_man_pages
     pkgs.pthreadmanpages
@@ -219,7 +215,7 @@ in {
   ];
 
   # Disable binary cache, it's insecure.
-  nix.binaryCaches = [];
+  #nix.binaryCaches = [];
   
   # Parallel building.
   nix.buildCores = 2;
