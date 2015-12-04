@@ -215,7 +215,7 @@ in {
   ];
 
   # Disable binary cache, it's insecure.
-  nix.binaryCaches = [];
+  #nix.binaryCaches = [];
   
   # Parallel building.
   nix.buildCores = 2;
