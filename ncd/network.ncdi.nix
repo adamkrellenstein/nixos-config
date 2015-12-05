@@ -14,14 +14,12 @@ template network_config {
 
     # Prepare for choosing LAN interface.
     var("true") enable_lan;
-    var("enp4s0") lan_dev1;
-    var("enp6s0") lan_dev2;
+    value({"enp4s0", "enp6s0", "enp0s3"}) lan_devs;
 
     # Allow overriding device via kernel command line.
     call("get_kernel_cmdline_param", {"ncd_lan"}) param;
     If (param.result.found) {
-        lan_dev1->set(param.result.value);
-        lan_dev2->set("none");
+        lan_devs->reset({param.result.value});
     };
 
     var("true") enable_vpntv;
@@ -32,7 +30,7 @@ template network_config {
     var("tap3") vpn_tv_dev;
     var("tap5") vpn_localnet_dev;
 
-    var({lan_dev1, lan_dev2, wlan_dev}) inet_depend;
+    var(@concatlist(lan_devs, {wlan_dev})) inet_depend;
 
     var({
         "127.0.0.1/8", "192.168.5.0/24",
@@ -80,8 +78,9 @@ template network_main {
     process_manager() mgr;
 
     # Start processes.
-    mgr->start("connection_lan", {config.lan_dev1});
-    mgr->start("connection_lan", {config.lan_dev2});
+    Foreach (config.lan_devs As lan_dev) {
+        mgr->start("connection_lan", {lan_dev});
+    };
     mgr->start("connection_wlan", {});
     mgr->start("internet_config", {});
     mgr->start("vpn_tv", {});

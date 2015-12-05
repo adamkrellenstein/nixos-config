@@ -255,5 +255,9 @@ in {
   # Swappiness.
   boot.kernel.sysctl."vm.swappiness" = 1;
 
+  # We have nixpkgs in our own place.
   environment.sessionVariables.NIX_PATH = pkgs.lib.mkForce "nixpkgs=/etc/nixos/nixpkgs:nixos-config=/etc/nixos/configuration.nix";
+
+  # Support running under VirtualBox.
+  #virtualisation.virtualbox.guest.enable = true;
 }

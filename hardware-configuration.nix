@@ -35,4 +35,8 @@
     };
 
   swapDevices = [ { device = "/var/swap"; } ];
+
+  boot.resumeDevice = "/dev/mapper/enc-root";
+
+  boot.kernelParams = [ "resume_offset=14530560" ];
 }
