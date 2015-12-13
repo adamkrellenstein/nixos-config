@@ -260,4 +260,17 @@ in {
 
   # Support running under VirtualBox.
   #virtualisation.virtualbox.guest.enable = true;
+
+  # Wireshark.
+  security.setuidOwners = [
+    {
+       program = "dumpcap";
+       owner = "root";
+       group = "wireshark";
+       setuid = true;
+       setgid = false;
+       permissions = "u+rx,g+x";
+    }
+  ];
+  users.extraGroups.wireshark.gid = 500;
 }
