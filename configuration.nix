@@ -273,4 +273,7 @@ in {
     }
   ];
   users.extraGroups.wireshark.gid = 500;
+
+  # Clean /tmp on boot.
+  boot.cleanTmpDir = true;
 }
