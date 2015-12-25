@@ -41,7 +41,7 @@ template network_config {
 
     var({"${pkgs.badvpn}/bin/badvpn-client"}) badvpn_client_cmd;
 
-    var("/home/my-badvpn/nssdb-tv2") nssdb_tv;
+    var("/etc/nssdb-peer-ambro") nssdb_tv;
     var("/home/my-badvpn/nssdb-localnet2") nssdb_localnet;
 }
 
@@ -238,7 +238,7 @@ template vpn_tv {
         "--logger", "syslog", "--syslog-ident", "badvpn-ambrotv",
         "--server-name", "server",
         "--server-addr", server_addr,
-        "--ssl", "--nssdb", nssdb_arg, "--client-cert-name", "peer-ambro2",
+        "--ssl", "--nssdb", nssdb_arg, "--client-cert-name", "peer-ambro",
         "--transport-mode", "tcp", "--peer-ssl"
     }) common_args;
 

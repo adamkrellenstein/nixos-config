@@ -114,6 +114,7 @@ in {
     pkgs.pthreadmanpages
     pkgs.stdmanpages
     pkgs.hicolor_icon_theme
+    pkgs.smartmontools
   ]
   ++ builtins.filter pkgs.lib.isDerivation (builtins.attrValues kf5)
   ++ [
@@ -191,10 +192,10 @@ in {
   nix.daemonIONiceLevel = 7;
 
   # Nix keep build dependencies.
-  nix.extraOptions = ''
-    gc-keep-outputs = true
-    gc-keep-derivations = true
-  '';
+  #nix.extraOptions = ''
+  #  gc-keep-outputs = true
+  #  gc-keep-derivations = true
+  #'';
 
   # Build in chroot.
   nix.useChroot = true;
@@ -276,4 +277,11 @@ in {
 
   # Clean /tmp on boot.
   boot.cleanTmpDir = true;
+
+  # Make sure some packages are preserved during GC.
+  system.extraDependencies = [pkgs.stdenv];
+
+  # SMART
+  services.smartd.enable = true;
+  services.smartd.notifications.x11.enable = true;
 }
