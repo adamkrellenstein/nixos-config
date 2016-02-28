@@ -232,7 +232,7 @@ in {
 
   # NTP.
   services.ntp.enable = true;
-  services.ntp.servers = [ "ntp1.arnes.si" "ntp.siol.net" ];
+  services.ntp.servers = [ "192.168.111.1" ];
   systemd.services.ntpd.wantedBy = [ "multi-user.target" ];
 
   # VirtualBox.
