@@ -23,13 +23,13 @@
   fileSystems."/" =
     { device = "/dev/mapper/enc-root";
       fsType = "ext4";
-      options = "defaults,noatime";
+      options = ["defaults" "noatime"];
     };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/6f027d31-26f8-4153-95a3-492cdf9bfcd4";
       fsType = "ext4";
-      options = "defaults,noatime";
+      options = ["defaults" "noatime"];
     };
 
   swapDevices = [ { device = "/var/swap"; } ];

@@ -4,11 +4,8 @@ let
 
   common = import ./common.nix;
 
-  kde = pkgs.kde4;
-  
-  kf5 = pkgs.kf5_stable;
-  plasma5 = pkgs.plasma5_stable.override { inherit kf5; };
-  kdeApps = pkgs.kdeApps_stable.override { inherit kf5; };
+  kde4 = pkgs.kde4;
+  kde5 = pkgs.kde5;
 
 in {
   imports = [
@@ -41,8 +38,8 @@ in {
   services.xserver.displayManager.kdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
+  #services.xserver.videoDrivers = ["nouveau"];
   hardware.opengl.driSupport32Bit = true;
-  services.xserver.displayManager.desktopManagerHandlesLidAndPower = false;
   services.xserver.synaptics.enable = true;
 
   # Polkit.
@@ -102,36 +99,35 @@ in {
     pkgs.bossa
     pkgs.nixopsUnstable
     pkgs.steam
-    kde.konversation
-    kde.kdevelop
+    kde4.konversation
+    kde4.kdevelop
     pkgs.openocd
-    kde.ktorrent
+    kde4.ktorrent
     pkgs.awscli
     pkgs.graphviz
     pkgs.ntfs3g
     pkgs.manpages
     pkgs.posix_man_pages
-    pkgs.pthreadmanpages
     pkgs.stdmanpages
     pkgs.hicolor_icon_theme
     pkgs.smartmontools
-  ]
-  ++ builtins.filter pkgs.lib.isDerivation (builtins.attrValues kf5)
-  ++ [
-    kdeApps.okular
-    kdeApps.gwenview
-    kdeApps.ksnapshot
-    kdeApps.kolourpaint
-    kdeApps.kdepim
-    kdeApps.filelight
-    kdeApps.ark
-    kdeApps.kcachegrind
-    kdeApps.kcalc
-    kdeApps.kde-wallpapers
-    kdeApps.kde-baseapps
-    kdeApps.kde-runtime
-    kdeApps.konsole
-    kdeApps.oxygen-icons
+    kde5.frameworkintegration
+    kde5.kinit
+    kde5.oxygen
+    kde5.kde-cli-tools
+    kde5.okular
+    kde5.gwenview
+    kde4.ksnapshot
+    kde4.kolourpaint
+    kde4.kdepim
+    kde5.filelight
+    kde5.ark
+    kde4.kcachegrind
+    kde5.kcalc
+    kde5.plasma-workspace-wallpapers
+    kde5.konsole
+    kde4.oxygen_icons
+    kde5.oxygen-icons5
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
@@ -168,7 +164,7 @@ in {
   hardware.pulseaudio.enable = true;
 
   # Kernel.
-  boot.kernelPackages = pkgs.linuxPackages_3_14;
+  boot.kernelPackages = pkgs.linuxPackages_4_1;
 
   # VirtualBox extension pack.
   nixpkgs.config.virtualbox.enableExtensionPack = true;
@@ -212,7 +208,7 @@ in {
     pkgs.libertine
     pkgs.freefont_ttf
     pkgs.dejavu_fonts
-    plasma5.oxygen-fonts
+    pkgs.noto-fonts
   ];
 
   # Disable binary cache, it's insecure.
