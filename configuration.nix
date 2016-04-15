@@ -38,7 +38,6 @@ in {
   services.xserver.displayManager.kdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
-  #services.xserver.videoDrivers = ["nouveau"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.synaptics.enable = true;
 
@@ -85,7 +84,6 @@ in {
     pkgs.unzip
     pkgs.gnumake
     pkgs.python27Full
-    pkgs.gcc-arm-embedded
     pkgs.printrun
     pkgs.cura
     pkgs.xscreensaver
@@ -99,10 +97,7 @@ in {
     pkgs.bossa
     pkgs.nixopsUnstable
     pkgs.steam
-    kde4.konversation
-    kde4.kdevelop
     pkgs.openocd
-    kde4.ktorrent
     pkgs.awscli
     pkgs.graphviz
     pkgs.ntfs3g
@@ -111,23 +106,33 @@ in {
     pkgs.stdmanpages
     pkgs.hicolor_icon_theme
     pkgs.smartmontools
-    kde5.frameworkintegration
-    kde5.kinit
-    kde5.oxygen
-    kde5.kde-cli-tools
-    kde5.okular
-    kde5.gwenview
+    pkgs.pv
+    pkgs.mono
+    pkgs.monodevelop
+    kde4.konversation
+    kde4.ktorrent
     kde4.ksnapshot
     kde4.kolourpaint
     kde4.kdepim
+    kde4.kcachegrind
+    kde4.oxygen_icons
+    kde5.frameworkintegration
+    kde5.kinit
+    kde5.breeze
+    kde5.kde-cli-tools
+    kde5.oxygen
+    kde5.oxygen-icons5
+    pkgs.hicolor_icon_theme
+    kde5.systemsettings
+    kde5.okular
+    kde5.gwenview
     kde5.filelight
     kde5.ark
-    kde4.kcachegrind
     kde5.kcalc
     kde5.plasma-workspace-wallpapers
     kde5.konsole
-    kde4.oxygen_icons
-    kde5.oxygen-icons5
+    kde5.kate
+    kde5.kdevelop
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
@@ -254,6 +259,9 @@ in {
 
   # We have nixpkgs in our own place.
   environment.sessionVariables.NIX_PATH = pkgs.lib.mkForce "nixpkgs=/etc/nixos/nixpkgs:nixos-config=/etc/nixos/configuration.nix";
+
+  # Fix icons in KDE5 in Xfce.
+  #environment.sessionVariables.XDG_CURRENT_DESKTOP = "kde";
 
   # Support running under VirtualBox.
   #virtualisation.virtualbox.guest.enable = true;
