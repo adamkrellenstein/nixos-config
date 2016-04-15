@@ -6,10 +6,12 @@
     # Warzone with videos.
     warzone2100 = warzone2100.override { withVideos = true; };
 
-    # Freetype make fonts less ugly.
-    # freetype = freetype.override { useEncumberedCode = false; };
-
     # Firefox branding.
     firefoxWrapper = wrapFirefox { browser = firefox.override { enableOfficialBranding = true; }; };
+
+    # Temporary fix for Steam.
+    steamPackages = pkgs.steamPackages // {
+        steam-chrootenv = pkgs.steamPackages.steam-chrootenv.override { newStdcpp = true; };
+    };
   };
 }

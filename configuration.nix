@@ -35,11 +35,22 @@ in {
 
   # Desktop.
   services.xserver.enable = true;
-  services.xserver.displayManager.kdm.enable = true;
+  #services.xserver.displayManager.kdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
+  #services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nouveau"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.synaptics.enable = true;
+
+  # SDDM with KDE theme.
+  services.xserver.displayManager.sddm = {
+    enable = true;
+    theme = "breeze";
+    themes = [
+      kde5.plasma-workspace
+      (kde5.oxygen-icons or kde5.oxygen-icons5)
+    ];
+  };
 
   # Polkit.
   security.polkit.extraConfig = ''
@@ -109,6 +120,7 @@ in {
     pkgs.pv
     pkgs.mono
     pkgs.monodevelop
+    pkgs.glxinfo
     kde4.konversation
     kde4.ktorrent
     kde4.ksnapshot
@@ -116,6 +128,7 @@ in {
     kde4.kdepim
     kde4.kcachegrind
     kde4.oxygen_icons
+    kde4.kdevelop
     kde5.frameworkintegration
     kde5.kinit
     kde5.breeze
@@ -132,7 +145,7 @@ in {
     kde5.plasma-workspace-wallpapers
     kde5.konsole
     kde5.kate
-    kde5.kdevelop
+    #kde5.kdevelop
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
