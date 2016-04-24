@@ -13,5 +13,7 @@
     steamPackages = pkgs.steamPackages // {
         steam-chrootenv = pkgs.steamPackages.steam-chrootenv.override { newStdcpp = true; };
     };
+    
+    wine = pkgs.wine.override { wineBuild = "wineWow"; };
   };
 }
