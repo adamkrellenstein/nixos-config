@@ -35,12 +35,10 @@ in {
 
   # Desktop.
   services.xserver.enable = true;
-  #services.xserver.displayManager.kdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-  #services.xserver.videoDrivers = ["nvidia"];
   services.xserver.videoDrivers = ["nouveau"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.synaptics.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
 
   # SDDM with KDE theme.
   services.xserver.displayManager.sddm = {
@@ -146,6 +144,7 @@ in {
     kde5.konsole
     kde5.kate
     #kde5.kdevelop
+    pkgs.libreoffice
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
@@ -159,10 +158,10 @@ in {
 
   services.udev.extraRules = ''
     # Allow user access to some USB devices.
-    SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3748", TAG+="uaccess"
-    SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="0478", TAG+="uaccess"
-    SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2104", TAG+="uaccess"
-    SUBSYSTEM=="usb", ATTR{idVendor}=="1457", ATTR{idProduct}=="5118", TAG+="uaccess"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="3748", TAG+="uaccess", RUN{builtin}+="uaccess"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="0478", TAG+="uaccess", RUN{builtin}+="uaccess"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2104", TAG+="uaccess", RUN{builtin}+="uaccess"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="1457", ATTR{idProduct}=="5118", TAG+="uaccess", RUN{builtin}+="uaccess"
 
     # MTP Samsung Galaxy S5 Mini.
     SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", ATTR{idProduct}=="6860", SYMLINK+="libmtp", MODE="660", ENV{ID_MTP_DEVICE}="1"
