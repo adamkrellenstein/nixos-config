@@ -233,7 +233,7 @@ in {
   #nix.binaryCaches = [];
   
   # Parallel building.
-  nix.buildCores = 2;
+  nix.buildCores = 3;
   nix.maxJobs = 2;
 
   # Allow "unfree" packages.
@@ -301,4 +301,7 @@ in {
   # SMART
   services.smartd.enable = true;
   services.smartd.notifications.x11.enable = true;
+
+  # Gnome keyring
+  services.gnome3.gnome-keyring.enable = true;
 }
