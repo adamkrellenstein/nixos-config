@@ -113,12 +113,11 @@ in {
     pkgs.manpages
     pkgs.posix_man_pages
     pkgs.stdmanpages
-    pkgs.hicolor_icon_theme
     pkgs.smartmontools
     pkgs.pv
-    pkgs.mono
-    pkgs.monodevelop
     pkgs.glxinfo
+    pkgs.libreoffice
+    pkgs.teensy-loader-cli
     kde4.konversation
     kde4.ktorrent
     kde4.ksnapshot
@@ -144,17 +143,11 @@ in {
     kde5.konsole
     kde5.kate
     #kde5.kdevelop
-    pkgs.libreoffice
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
     /* Best to have nothing here. */
   });
-
-  # Make sure KDE finds its stuff.
-  environment.pathsToLink = [
-    "/share"
-  ];
 
   services.udev.extraRules = ''
     # Allow user access to some USB devices.
@@ -181,7 +174,6 @@ in {
   hardware.pulseaudio.enable = true;
 
   # Kernel.
-  #boot.kernelPackages = pkgs.linuxPackages_4_1;
   boot.kernelPackages = pkgs.linuxPackages_4_4;
 
   # VirtualBox extension pack.
@@ -229,9 +221,6 @@ in {
     pkgs.noto-fonts
   ];
 
-  # Disable binary cache, it's insecure.
-  #nix.binaryCaches = [];
-  
   # Parallel building.
   nix.buildCores = 3;
   nix.maxJobs = 2;
@@ -260,7 +249,7 @@ in {
   hardware.bluetooth.enable = true;
   
   # User account for NBD servers.
-  users.extraUsers.my_nbd = {
+  users.users.my_nbd = {
     description = "Network Block Device servers";
     isSystemUser = true;
     group = "my_nbd";
@@ -272,12 +261,6 @@ in {
 
   # We have nixpkgs in our own place.
   environment.sessionVariables.NIX_PATH = pkgs.lib.mkForce "nixpkgs=/etc/nixos/nixpkgs:nixos-config=/etc/nixos/configuration.nix";
-
-  # Fix icons in KDE5 in Xfce.
-  #environment.sessionVariables.XDG_CURRENT_DESKTOP = "kde";
-
-  # Support running under VirtualBox.
-  #virtualisation.virtualbox.guest.enable = true;
 
   # Wireshark.
   security.setuidOwners = [
@@ -304,4 +287,7 @@ in {
 
   # Gnome keyring
   services.gnome3.gnome-keyring.enable = true;
+
+  # Make sure KDE finds its stuff.
+  environment.pathsToLink = ["/share"];
 }
