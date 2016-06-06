@@ -118,6 +118,7 @@ in {
     pkgs.glxinfo
     pkgs.libreoffice
     pkgs.teensy-loader-cli
+    pkgs.xfce.xfce4_xkb_plugin
     kde4.konversation
     kde4.ktorrent
     kde4.ksnapshot
