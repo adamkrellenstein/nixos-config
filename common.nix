@@ -1,13 +1,10 @@
 {
-  packageOverrides = pkgs: with pkgs; {
+  packageOverrides = pkgs: {
     # Smart card driver.
-    gemalto-dotnetv2-pkcs11 = callPackage ./gemalto-dotnetv2-pkcs11 {};
+    gemalto-dotnetv2-pkcs11 = pkgs.callPackage ./gemalto-dotnetv2-pkcs11 {};
 
     # Warzone with videos.
-    warzone2100 = warzone2100.override { withVideos = true; };
-
-    # Firefox branding.
-    firefoxWrapper = wrapFirefox { browser = firefox.override { enableOfficialBranding = true; }; };
+    warzone2100 = pkgs.warzone2100.override { withVideos = true; };
 
     # Temporary fix for Steam.
     steamPackages = pkgs.steamPackages // {
@@ -15,5 +12,11 @@
     };
     
     wine = pkgs.wine.override { wineBuild = "wineWow"; };
+
+    stdenv = pkgs.stdenv // {
+      platform = pkgs.stdenv.platform // {
+        kernelExtraConfig = "PREEMPT y";
+      };
+    };
   };
 }
