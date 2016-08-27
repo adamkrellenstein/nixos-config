@@ -15,7 +15,7 @@ in {
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  boot.loader.grub.timeout = 1;
+  boot.loader.timeout = 1;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -126,7 +126,8 @@ in {
     kde4.kdepim
     kde4.kcachegrind
     kde4.oxygen_icons
-    kde4.kdevelop
+    #kde4.kdevelop
+    pkgs.kdevelop5
     kde5.frameworkintegration
     kde5.kinit
     kde5.breeze
@@ -143,7 +144,6 @@ in {
     kde5.plasma-workspace-wallpapers
     kde5.konsole
     kde5.kate
-    #kde5.kdevelop
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
@@ -204,8 +204,8 @@ in {
   #  gc-keep-derivations = true
   #'';
 
-  # Build in chroot.
-  nix.useChroot = true;
+  # Build in sandbox.
+  nix.useSandbox = true;
 
   # Smart card.
   services.pcscd.enable = true;
@@ -291,4 +291,13 @@ in {
 
   # Make sure KDE finds its stuff.
   environment.pathsToLink = ["/share"];
+
+  services.xserver.inputClassSections = [
+    ''
+      Identifier "Ignore keyboard mouse device"
+      MatchIsKeyboard "on"
+      MatchProduct "Logitech Gaming Mouse G300"
+      Option "Ignore" "on"
+    ''
+  ];
 }
