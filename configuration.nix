@@ -300,4 +300,7 @@ in {
       Option "Ignore" "on"
     ''
   ];
+
+  # Chromium WideVine plugin (for Netflix).
+  nixpkgs.config.chromium.enableWideVine = true;
 }
