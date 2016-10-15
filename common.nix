@@ -12,19 +12,5 @@
     };
     
     wine = pkgs.wine.override { wineBuild = "wineWow"; };
-
-/*
-    linux_4_4 = pkgs.linux_4_4.override {
-      kernelPatches = pkgs.linux_4_4.kernelPatches ++ [
-        { patch = /home/ambro/Downloads/patch-4.4.17-rt25.patch; name = "rt"; }
-      ];
-    };
-*/
-
-    stdenv = pkgs.stdenv // {
-      platform = pkgs.stdenv.platform // {
-        kernelExtraConfig = "PREEMPT y";
-      };
-    };
   };
 }

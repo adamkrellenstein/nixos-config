@@ -7,6 +7,8 @@ let
   kde4 = pkgs.kde4;
   kde5 = pkgs.kde5;
 
+  rt_kernel = false;
+
 in {
   imports = [
     ./hardware-configuration.nix
@@ -111,6 +113,7 @@ in {
     pkgs.graphviz
     pkgs.ntfs3g
     pkgs.manpages
+    pkgs.manpages.devdoc
     pkgs.posix_man_pages
     pkgs.stdmanpages
     pkgs.smartmontools
@@ -127,7 +130,7 @@ in {
     kde4.kcachegrind
     kde4.oxygen_icons
     #kde4.kdevelop
-    pkgs.kdevelop5
+    pkgs.kdevelop
     kde5.frameworkintegration
     kde5.kinit
     kde5.breeze
@@ -147,7 +150,11 @@ in {
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
-    /* Best to have nothing here. */
+    stdenv = pkgs.stdenv // {
+      platform = pkgs.stdenv.platform // {
+        kernelExtraConfig = if rt_kernel then "PREEMPT_RT_FULL y" else "PREEMPT y";
+      };
+    };
   });
 
   services.udev.extraRules = ''
@@ -175,7 +182,7 @@ in {
   hardware.pulseaudio.enable = true;
 
   # Kernel.
-  boot.kernelPackages = pkgs.linuxPackages_4_4;
+  boot.kernelPackages = if rt_kernel then pkgs.linuxPackages_4_4_rt else pkgs.linuxPackages_4_4;
 
   # VirtualBox extension pack.
   nixpkgs.config.virtualbox.enableExtensionPack = true;
@@ -240,7 +247,7 @@ in {
   systemd.services.ntpd.wantedBy = [ "multi-user.target" ];
 
   # VirtualBox.
-  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enable = !rt_kernel;
   virtualisation.virtualbox.host.addNetworkInterface = false;
 
   # Time zone.
@@ -303,4 +310,9 @@ in {
 
   # Chromium WideVine plugin (for Netflix).
   nixpkgs.config.chromium.enableWideVine = true;
+
+  security.pam.loginLimits = [
+    { domain = "ambro"; item = "memlock"; type = "-"; value = "100000"; }
+    { domain = "ambro"; item = "rtprio"; type = "-"; value = "80"; }
+  ];
 }
