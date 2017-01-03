@@ -37,7 +37,8 @@ in {
 
   # Desktop.
   services.xserver.enable = true;
-  services.xserver.videoDrivers = ["nouveau"];
+  #services.xserver.videoDrivers = ["nouveau"];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl.driSupport32Bit = true;
   services.xserver.synaptics.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
@@ -113,7 +114,6 @@ in {
     pkgs.graphviz
     pkgs.ntfs3g
     pkgs.manpages
-    pkgs.manpages.devdoc
     pkgs.posix_man_pages
     pkgs.stdmanpages
     pkgs.smartmontools
@@ -122,6 +122,7 @@ in {
     pkgs.libreoffice
     pkgs.teensy-loader-cli
     pkgs.xfce.xfce4_xkb_plugin
+    pkgs.xfce.xfce4_whiskermenu_plugin
     kde4.konversation
     kde4.ktorrent
     kde4.ksnapshot
@@ -147,6 +148,8 @@ in {
     kde5.plasma-workspace-wallpapers
     kde5.konsole
     kde5.kate
+    kde5.ksysguard
+    pkgs.vanilla-dmz
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
@@ -180,6 +183,7 @@ in {
 
   # Enable PulseAudio.
   hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
 
   # Kernel.
   boot.kernelPackages = if rt_kernel then pkgs.linuxPackages_4_4_rt else pkgs.linuxPackages_4_4;

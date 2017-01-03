@@ -86,8 +86,8 @@ template network_main {
     mgr->start("vpn_tv", {});
     mgr->start("vpn_localnet", {});
     #mgr->start("virtualbox", {});
-    mgr->start("dnsmasq", {});
-    mgr->start("natnet", {});
+    #mgr->start("dnsmasq", {});
+    #mgr->start("natnet", {});
     mgr->start("bbb_interface", {});
 }
 
@@ -182,23 +182,6 @@ template internet_config {
     # Choose server addresses.
     call("determine_addrs", {"_caller"}) addrs;
     alias("addrs.result") addrs;
-
-    # Build hosts entries.
-    concat(addrs.vpnserver_ipaddr, " vpnserver.localnet") vpnserver_entry;
-
-    # Build dnsmasq reload command.
-    var({"/bin/sh", "-c", "kill -HUP $(cat /var/run/dnsmasq.pid); true"}) reload_dnsmasq_cmd;
-
-    # Reload dnsmasq on shutdown.
-    run({}, reload_dnsmasq_cmd);
-
-    # Write hosts file.
-    var({"/bin/sh", "-c", "echo > /etc/hosts.dnsmasq"}) undo;
-    run({}, undo);
-    file_write("/etc/hosts.dnsmasq", vpnserver_entry);
-
-    # Reload dnsmasq on startup.
-    runonce(reload_dnsmasq_cmd);
 
     main.depscope->provide("internet");
 }
