@@ -150,6 +150,7 @@ in {
     kde5.kate
     kde5.ksysguard
     pkgs.vanilla-dmz
+    pkgs.firefox
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
@@ -193,9 +194,9 @@ in {
 
   # Power buttons.
   services.logind.extraConfig = ''
-    HandlePowerKey=suspend
-    HandleSuspendKey=suspend
-    HandleHibernateKey=suspend
+    HandlePowerKey=hibernate
+    HandleSuspendKey=hibernate
+    HandleHibernateKey=hibernate
     HandleLidSwitch=ignore
     HandleLidSwitchDocked=ignore
 
@@ -313,7 +314,7 @@ in {
   ];
 
   # Chromium WideVine plugin (for Netflix).
-  nixpkgs.config.chromium.enableWideVine = true;
+  #nixpkgs.config.chromium.enableWideVine = true;
 
   security.pam.loginLimits = [
     { domain = "ambro"; item = "memlock"; type = "-"; value = "100000"; }
