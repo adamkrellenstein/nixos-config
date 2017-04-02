@@ -42,6 +42,7 @@ in {
   hardware.opengl.driSupport32Bit = true;
   services.xserver.synaptics.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
+  #services.xserver.desktopManager.kde5.enable = true;
 
   # SDDM with KDE theme.
   services.xserver.displayManager.sddm = {
@@ -149,6 +150,7 @@ in {
     kde5.konsole
     kde5.kate
     kde5.ksysguard
+    kde5.plasma-desktop
     pkgs.vanilla-dmz
     pkgs.firefox
   ];
@@ -233,6 +235,7 @@ in {
     pkgs.freefont_ttf
     pkgs.dejavu_fonts
     pkgs.noto-fonts
+    pkgs.iosevka
   ];
 
   # Parallel building.
