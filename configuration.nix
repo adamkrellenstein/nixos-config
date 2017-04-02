@@ -4,9 +4,6 @@ let
 
   common = import ./common.nix;
 
-  kde4 = pkgs.kde4;
-  kde5 = pkgs.kde5;
-
   rt_kernel = false;
 
 in {
@@ -48,10 +45,7 @@ in {
   services.xserver.displayManager.sddm = {
     enable = true;
     theme = "breeze";
-    themes = [
-      kde5.plasma-workspace
-      (kde5.oxygen-icons or kde5.oxygen-icons5)
-    ];
+    package = pkgs.sddmPlasma5;
   };
 
   # Polkit.
@@ -70,7 +64,9 @@ in {
   boot.kernelModules = ["fuse"];
 
   # Packages.
-  environment.systemPackages = [
+  environment.systemPackages = let
+    kf = pkgs.kdeFrameworks;
+  in [
     pkgs.chromium
     pkgs.encfs
     pkgs.screen
@@ -124,33 +120,36 @@ in {
     pkgs.teensy-loader-cli
     pkgs.xfce.xfce4_xkb_plugin
     pkgs.xfce.xfce4_whiskermenu_plugin
-    kde4.konversation
-    kde4.ktorrent
-    kde4.ksnapshot
-    kde4.kolourpaint
-    kde4.kdepim
-    kde4.kcachegrind
-    kde4.oxygen_icons
-    #kde4.kdevelop
+    pkgs.konversation
     pkgs.kdevelop
-    kde5.frameworkintegration
-    kde5.kinit
-    kde5.breeze
-    kde5.kde-cli-tools
-    kde5.oxygen
-    kde5.oxygen-icons5
-    pkgs.hicolor_icon_theme
-    kde5.systemsettings
-    kde5.okular
-    kde5.gwenview
-    kde5.filelight
-    kde5.ark
-    kde5.kcalc
-    kde5.plasma-workspace-wallpapers
-    kde5.konsole
-    kde5.kate
-    kde5.ksysguard
-    kde5.plasma-desktop
+    pkgs.frameworkintegration
+    kf.kactivities
+    kf.kauth
+    kf.kcmutils
+    kf.kconfig
+    kf.kconfigwidgets
+    kf.kcoreaddons
+    kf.kdbusaddons
+    kf.kded
+    kf.kfilemetadata
+    kf.kiconthemes
+    kf.kimageformats
+    kf.kinit
+    kf.kio
+    kf.kservice
+    pkgs.breeze-qt5
+    pkgs.ksysguard
+    pkgs.systemsettings
+    pkgs.breeze-icons
+    pkgs.oxygen-icons5
+    pkgs.okular
+    pkgs.gwenview
+    pkgs.filelight
+    pkgs.ark
+    pkgs.kcalc
+    pkgs.plasma-workspace-wallpapers
+    pkgs.konsole
+    pkgs.kate
     pkgs.vanilla-dmz
     pkgs.firefox
   ];
@@ -158,7 +157,7 @@ in {
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
     stdenv = pkgs.stdenv // {
       platform = pkgs.stdenv.platform // {
-        kernelExtraConfig = if rt_kernel then "PREEMPT_RT_FULL y" else "PREEMPT y";
+        #kernelExtraConfig = if rt_kernel then "PREEMPT_RT_FULL y" else "PREEMPT y";
       };
     };
   });
@@ -190,7 +189,7 @@ in {
   hardware.pulseaudio.support32Bit = true;
 
   # Kernel.
-  boot.kernelPackages = if rt_kernel then pkgs.linuxPackages_4_4_rt else pkgs.linuxPackages_4_4;
+  #boot.kernelPackages = if rt_kernel then pkgs.linuxPackages_4_4_rt else pkgs.linuxPackages_4_4;
 
   # VirtualBox extension pack.
   nixpkgs.config.virtualbox.enableExtensionPack = true;
@@ -252,8 +251,8 @@ in {
 
   # NTP.
   services.ntp.enable = true;
-  services.ntp.servers = [ "192.168.111.1" ];
-  systemd.services.ntpd.wantedBy = [ "multi-user.target" ];
+  services.timesyncd.enable = false;
+  networking.timeServers = [ "192.168.111.1" ];
 
   # VirtualBox.
   virtualisation.virtualbox.host.enable = !rt_kernel;
@@ -280,16 +279,16 @@ in {
   environment.sessionVariables.NIX_PATH = pkgs.lib.mkForce "nixpkgs=/etc/nixos/nixpkgs:nixos-config=/etc/nixos/configuration.nix";
 
   # Wireshark.
-  security.setuidOwners = [
-    {
-       program = "dumpcap";
+  security.wrappers = {
+    dumpcap = {
+       source = "${pkgs.wireshark}/bin/dumpcap";
        owner = "root";
        group = "wireshark";
        setuid = true;
        setgid = false;
        permissions = "u+rx,g+x";
-    }
-  ];
+    };
+  };
   users.extraGroups.wireshark.gid = 500;
 
   # Clean /tmp on boot.
