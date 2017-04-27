@@ -323,4 +323,9 @@ in {
     { domain = "ambro"; item = "memlock"; type = "-"; value = "100000"; }
     { domain = "ambro"; item = "rtprio"; type = "-"; value = "80"; }
   ];
+
+  # Fix cursor themes in Xfce.
+  environment.variables.XCURSOR_PATH = "$HOME/.icons";
+  environment.profileRelativeEnvVars.XCURSOR_PATH = [ "/share/icons" ];
+  environment.sessionVariables.GTK_PATH = "${config.system.path}/lib/gtk-3.0:${config.system.path}/lib/gtk-2.0";
 }
