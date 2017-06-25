@@ -6,6 +6,18 @@ let
 
   rt_kernel = false;
 
+  firefox-gemalto-unwrapped = pkgs.firefox-esr-unwrapped.override {
+    nss = pkgs.callPackage ./nss-old {};
+  };
+
+  firefox-gemalto = pkgs.wrapFirefox firefox-gemalto-unwrapped {};
+
+  firefox-gemalto-wrapper = pkgs.runCommand "firefox-gemalto-wrapper" {}
+  ''
+    mkdir -p $out/bin
+    ln -s ${firefox-gemalto}/bin/firefox $out/bin/firefox-gemalto
+  '';
+
 in {
   imports = [
     ./hardware-configuration.nix
@@ -105,7 +117,7 @@ in {
     pkgs.wireshark
     pkgs.bossa
     pkgs.nixopsUnstable
-    pkgs.steam
+    #pkgs.steam
     pkgs.openocd
     pkgs.awscli
     pkgs.graphviz
@@ -152,6 +164,7 @@ in {
     pkgs.kate
     pkgs.vanilla-dmz
     pkgs.firefox
+    firefox-gemalto-wrapper
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
