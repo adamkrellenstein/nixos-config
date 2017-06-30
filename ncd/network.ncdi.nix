@@ -14,7 +14,8 @@ template network_config {
 
     # Prepare for choosing LAN interface.
     var("true") enable_lan;
-    value({"enp4s0", "enp4s0f0", "enp4s0f1", "enp6s0", "enp0s3"}) lan_devs;
+    value({"enp4s0", "enp4s0f0", "enp4s0f1", "enp6s0",
+           "enp0s3", "ens5"}) lan_devs;
 
     # Allow overriding device via kernel command line.
     call("get_kernel_cmdline_param", {"ncd_lan"}) param;
@@ -22,7 +23,7 @@ template network_config {
         lan_devs->reset({param.result.value});
     };
 
-    var("true") enable_vpntv;
+    var("false") enable_vpntv;
     var("false") enable_vpnlocal;
     var("true") enable_wlan;
 
