@@ -117,7 +117,7 @@ in {
     pkgs.wireshark
     pkgs.bossa
     pkgs.nixopsUnstable
-    #pkgs.steam
+    pkgs.steam
     pkgs.openocd
     pkgs.awscli
     pkgs.graphviz
@@ -165,6 +165,8 @@ in {
     pkgs.vanilla-dmz
     pkgs.firefox
     firefox-gemalto-wrapper
+    pkgs.xfce.xfce4_power_manager
+    pkgs.dhcp
   ];
 
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {

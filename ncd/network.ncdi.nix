@@ -85,11 +85,10 @@ template network_main {
     mgr->start("connection_wlan", {});
     mgr->start("internet_config", {});
     mgr->start("vpn_tv", {});
-    mgr->start("vpn_localnet", {});
+    #mgr->start("vpn_localnet", {});
     #mgr->start("virtualbox", {});
-    #mgr->start("dnsmasq", {});
     #mgr->start("natnet", {});
-    mgr->start("bbb_interface", {});
+    #mgr->start("bbb_interface", {});
 }
 
 template connection_lan {
@@ -430,10 +429,6 @@ template natnet_nbd {
     
     var({"${pkgs.nbd}/bin/nbd-server", "-d", @concat(natnet.addr, "@", nbd_port), @concat("/var/nbd/", nbd_name, ".raw")}) nbd_cmd;
     daemon(nbd_cmd, [@username: "my_nbd", @retry_time: "1000"]);
-}
-
-template dnsmasq {
-    daemon({"${pkgs.dnsmasq}/bin/dnsmasq", "-k", "-x", "/var/run/dnsmasq.pid", "--user=dnsmasq", "--group=dnsmasq"});
 }
 
 template nat_rules {
