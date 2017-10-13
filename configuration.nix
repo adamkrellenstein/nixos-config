@@ -4,8 +4,6 @@ let
 
   common = import ./common.nix;
 
-  rt_kernel = false;
-
   firefox-gemalto-unwrapped = pkgs.firefox-esr-unwrapped.override {
     nss = pkgs.callPackage ./nss-old {};
   };
@@ -37,9 +35,6 @@ in {
         ForceCommand internal-sftp
   '';
 
-  # Disable cron.
-  services.cron.enable = false;
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [pkgs.hplip];
@@ -53,12 +48,9 @@ in {
   services.xserver.desktopManager.xfce.enable = true;
   #services.xserver.desktopManager.kde5.enable = true;
 
-  # SDDM with KDE theme.
-  services.xserver.displayManager.sddm = {
-    enable = true;
-    theme = "breeze";
-    package = pkgs.sddmPlasma5;
-  };
+  # SDDM.
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm.theme = "breeze";
 
   # Polkit.
   security.polkit.extraConfig = ''
@@ -90,7 +82,6 @@ in {
     pkgs.cryptsetup
     pkgs.gparted
     pkgs.git
-    pkgs.subversion
     pkgs.file
     pkgs.strace
     pkgs.binutils
@@ -99,7 +90,6 @@ in {
     pkgs.psmisc
     pkgs.nix-repl
     pkgs.pavucontrol
-    pkgs.stlink
     pkgs.gcc
     pkgs.clang
     pkgs.unzip
@@ -172,8 +162,11 @@ in {
   nixpkgs.config.packageOverrides = pkgs: (common.packageOverrides pkgs) // (with pkgs; {
     stdenv = pkgs.stdenv // {
       platform = pkgs.stdenv.platform // {
-        #kernelExtraConfig = if rt_kernel then "PREEMPT_RT_FULL y" else "PREEMPT y";
+        #kernelExtraConfig = "PREEMPT y";
       };
+    };
+    xfce = pkgs.xfce // {
+      gvfs = pkgs.gvfs;
     };
   });
 
@@ -189,25 +182,18 @@ in {
     SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", ATTR{idProduct}=="6860", SYMLINK+="libmtp", MODE="660", ENV{ID_MTP_DEVICE}="1"
   '';
 
-  # Network Configuration Daemon.
-  networking.ncd.enable = true;
-  networking.ncd.ncdConfDir = ./ncd;
-  networking.ncd.scripts = [
-      "cmdline.ncdi.nix" "main.ncd.nix" "nbd_boot.ncdi.nix" "network.ncdi.nix"
-      "run_process_output.ncdi.nix" "vbox_hostonly.ncdi.nix" "temp_file.ncdi.nix"
-      "dhcpd.ncdi.nix"
-  ];
-  networking.networkmanager.enable = false;
+  # NetworkManager
+  networking.networkmanager.enable = true;
 
   # Enable PulseAudio.
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 
   # Kernel.
-  #boot.kernelPackages = if rt_kernel then pkgs.linuxPackages_4_4_rt else pkgs.linuxPackages_4_4;
+  #boot.kernelPackages = pkgs.linuxPackages_4_4;
 
   # VirtualBox extension pack.
-  nixpkgs.config.virtualbox.enableExtensionPack = true;
+  #nixpkgs.config.virtualbox.enableExtensionPack = true;
 
   # Power buttons.
   services.logind.extraConfig = ''
@@ -253,7 +239,7 @@ in {
   ];
 
   # Parallel building.
-  nix.buildCores = 3;
+  nix.buildCores = 4;
   nix.maxJobs = 2;
 
   # Allow "unfree" packages.
@@ -270,7 +256,7 @@ in {
   networking.timeServers = [ "192.168.111.1" ];
 
   # VirtualBox.
-  virtualisation.virtualbox.host.enable = !rt_kernel;
+  virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.addNetworkInterface = false;
 
   # Time zone.
@@ -279,6 +265,7 @@ in {
   # Bluetooth.
   hardware.bluetooth.enable = true;
   
+  /*
   # User account for NBD servers.
   users.users.my_nbd = {
     description = "Network Block Device servers";
@@ -286,30 +273,22 @@ in {
     group = "my_nbd";
   };
   users.extraGroups.my_nbd = {};
-
+  */
+  
   # Swappiness.
   boot.kernel.sysctl."vm.swappiness" = 1;
 
   # We have nixpkgs in our own place.
-  environment.sessionVariables.NIX_PATH = pkgs.lib.mkForce "nixpkgs=/etc/nixos/nixpkgs:nixos-config=/etc/nixos/configuration.nix";
+  environment.sessionVariables.NIX_PATH = pkgs.lib.mkForce
+    "nixpkgs=/etc/nixos/nixpkgs:nixos-config=/etc/nixos/configuration.nix";
 
   # Wireshark.
-  security.wrappers = {
-    dumpcap = {
-       source = "${pkgs.wireshark}/bin/dumpcap";
-       owner = "root";
-       group = "wireshark";
-       setuid = true;
-       setgid = false;
-       permissions = "u+rx,g+x";
-    };
-  };
-  users.extraGroups.wireshark.gid = 500;
-
+  programs.wireshark.enable = true;
+  
   # Clean /tmp on boot.
   boot.cleanTmpDir = true;
 
-  # Make sure some packages are preserved during GC.
+  # Make sure stdenv is installed.
   system.extraDependencies = [pkgs.stdenv];
 
   # SMART
@@ -322,24 +301,19 @@ in {
   # Make sure KDE finds its stuff.
   environment.pathsToLink = ["/share"];
 
+  # Mouse issue workaround
   services.xserver.inputClassSections = [
     ''
       Identifier "Ignore keyboard mouse device"
       MatchIsKeyboard "on"
-      MatchProduct "Logitech Gaming Mouse G300"
+      MatchProduct "Logitech G300s Optical Gaming Mouse"
       Option "Ignore" "on"
     ''
   ];
 
-  # Chromium WideVine plugin (for Netflix).
-  #nixpkgs.config.chromium.enableWideVine = true;
-
+  # RT priority permissions
   security.pam.loginLimits = [
     { domain = "ambro"; item = "memlock"; type = "-"; value = "100000"; }
     { domain = "ambro"; item = "rtprio"; type = "-"; value = "80"; }
   ];
-
-  # Fix cursor themes in Xfce.
-  environment.variables.XCURSOR_PATH = "$HOME/.icons";
-  environment.profileRelativeEnvVars.XCURSOR_PATH = [ "/share/icons" ];
 }

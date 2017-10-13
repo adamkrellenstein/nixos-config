@@ -1,0 +1,728 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1FB0484B10DA8A230011231D /* PCSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB0484A10DA8A230011231D /* PCSC.framework */; };
+		1FB0489A10DA8CD90011231D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB0489910DA8CD90011231D /* libz.dylib */; };
+		1FED4B53151B213400744229 /* algo_des.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4A97151B213300744229 /* algo_des.cpp */; };
+		1FED4B54151B213400744229 /* algo_des.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4A98151B213300744229 /* algo_des.h */; };
+		1FED4B55151B213400744229 /* algo_md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4A99151B213300744229 /* algo_md5.cpp */; };
+		1FED4B56151B213400744229 /* algo_md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4A9A151B213300744229 /* algo_md5.h */; };
+		1FED4B57151B213400744229 /* algo_sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4A9B151B213300744229 /* algo_sha1.cpp */; };
+		1FED4B58151B213400744229 /* algo_sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4A9C151B213300744229 /* algo_sha1.h */; };
+		1FED4B59151B213400744229 /* algo_sha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4A9D151B213300744229 /* algo_sha256.cpp */; };
+		1FED4B5A151B213400744229 /* algo_sha256.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4A9E151B213300744229 /* algo_sha256.h */; };
+		1FED4B5B151B213400744229 /* algo_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4A9F151B213300744229 /* algo_utils.cpp */; };
+		1FED4B5C151B213400744229 /* algo_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AA0151B213300744229 /* algo_utils.h */; };
+		1FED4B5D151B213400744229 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AA1151B213300744229 /* Application.cpp */; };
+		1FED4B5E151B213400744229 /* Application.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AA2151B213300744229 /* Application.hpp */; };
+		1FED4B5F151B213400744229 /* Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AA3151B213300744229 /* Array.cpp */; };
+		1FED4B60151B213400744229 /* Array.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AA4151B213300744229 /* Array.hpp */; };
+		1FED4B61151B213400744229 /* attrcert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AA5151B213300744229 /* attrcert.cpp */; };
+		1FED4B62151B213400744229 /* attrcert.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AA6151B213300744229 /* attrcert.h */; };
+		1FED4B63151B213400744229 /* beroctet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AA8151B213300744229 /* beroctet.cpp */; };
+		1FED4B64151B213400744229 /* beroctet.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AA9151B213300744229 /* beroctet.h */; };
+		1FED4B65151B213400744229 /* cardmod.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AAB151B213300744229 /* cardmod.h */; };
+		1FED4B66151B213400744229 /* CardModuleService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AAC151B213300744229 /* CardModuleService.cpp */; };
+		1FED4B67151B213400744229 /* CardModuleService.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AAD151B213300744229 /* CardModuleService.hpp */; };
+		1FED4B68151B213400744229 /* cert_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AAE151B213300744229 /* cert_utils.cpp */; };
+		1FED4B69151B213400744229 /* cert_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AAF151B213300744229 /* cert_utils.h */; };
+		1FED4B6A151B213400744229 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AB0151B213300744229 /* config.h */; };
+		1FED4B6B151B213400744229 /* Configuration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AB1151B213300744229 /* Configuration.cpp */; };
+		1FED4B6C151B213400744229 /* Configuration.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AB2151B213300744229 /* Configuration.hpp */; };
+		1FED4B6F151B213400744229 /* cr_digit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AB8151B213300744229 /* cr_digit.cpp */; };
+		1FED4B70151B213400744229 /* cr_digit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AB9151B213300744229 /* cr_digit.h */; };
+		1FED4B71151B213400744229 /* cr_global.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4ABA151B213300744229 /* cr_global.h */; };
+		1FED4B72151B213400744229 /* cr_nn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4ABB151B213300744229 /* cr_nn.cpp */; };
+		1FED4B73151B213400744229 /* cr_nn.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4ABC151B213300744229 /* cr_nn.h */; };
+		1FED4B74151B213400744229 /* cr_random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4ABD151B213300744229 /* cr_random.cpp */; };
+		1FED4B75151B213400744229 /* cr_random.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4ABE151B213300744229 /* cr_random.h */; };
+		1FED4B76151B213400744229 /* cr_rsa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4ABF151B213300744229 /* cr_rsa.cpp */; };
+		1FED4B77151B213400744229 /* cr_rsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AC0151B213300744229 /* cr_rsa.h */; };
+		1FED4B78151B213400744229 /* cryptoki.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AC1151B213300744229 /* cryptoki.h */; };
+		1FED4B79151B213400744229 /* des.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AE8151B213300744229 /* des.cpp */; };
+		1FED4B7A151B213400744229 /* des.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AE9151B213300744229 /* des.h */; };
+		1FED4B7B151B213400744229 /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AEA151B213300744229 /* Device.cpp */; };
+		1FED4B7C151B213400744229 /* Device.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AEB151B213300744229 /* Device.hpp */; };
+		1FED4B7D151B213400744229 /* DeviceMonitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AEC151B213300744229 /* DeviceMonitor.cpp */; };
+		1FED4B7E151B213400744229 /* DeviceMonitor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AED151B213300744229 /* DeviceMonitor.hpp */; };
+		1FED4B7F151B213400744229 /* Digest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AEE151B213300744229 /* Digest.cpp */; };
+		1FED4B80151B213400744229 /* digest.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AEF151B213300744229 /* digest.h */; };
+		1FED4B81151B213400744229 /* DigestMD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AF0151B213300744229 /* DigestMD5.cpp */; };
+		1FED4B82151B213400744229 /* DigestSHA1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AF1151B213300744229 /* DigestSHA1.cpp */; };
+		1FED4B83151B213400744229 /* DigestSHA256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AF2151B213300744229 /* DigestSHA256.cpp */; };
+		1FED4B84151B213400744229 /* Except.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AF3151B213300744229 /* Except.h */; };
+		1FED4B85151B213400744229 /* ha_config.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AF5151B213300744229 /* ha_config.h */; };
+		1FED4B86151B213400744229 /* IDeviceMonitorListener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AF6151B213300744229 /* IDeviceMonitorListener.hpp */; };
+		1FED4B87151B213400744229 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AF8151B213300744229 /* Log.cpp */; };
+		1FED4B88151B213400744229 /* Log.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AF9151B213300744229 /* Log.hpp */; };
+		1FED4B89151B213400744229 /* Marshaller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AFB151B213300744229 /* Marshaller.cpp */; };
+		1FED4B8A151B213400744229 /* Marshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AFC151B213300744229 /* Marshaller.h */; };
+		1FED4B8B151B213400744229 /* MarshallerCfg.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AFD151B213300744229 /* MarshallerCfg.h */; };
+		1FED4B8C151B213400744229 /* MarshallerUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4AFE151B213300744229 /* MarshallerUtil.cpp */; };
+		1FED4B8D151B213400744229 /* MarshallerUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4AFF151B213300744229 /* MarshallerUtil.h */; };
+		1FED4B8E151B213400744229 /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B00151B213300744229 /* md5.h */; };
+		1FED4B8F151B213400744229 /* MiniDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B01151B213300744229 /* MiniDriver.cpp */; };
+		1FED4B90151B213400744229 /* MiniDriver.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B02151B213300744229 /* MiniDriver.hpp */; };
+		1FED4B91151B213400744229 /* MiniDriverAuthentication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B03151B213300744229 /* MiniDriverAuthentication.cpp */; };
+		1FED4B92151B213400744229 /* MiniDriverAuthentication.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B04151B213300744229 /* MiniDriverAuthentication.hpp */; };
+		1FED4B93151B213400744229 /* MiniDriverCardCacheFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B05151B213300744229 /* MiniDriverCardCacheFile.cpp */; };
+		1FED4B94151B213400744229 /* MiniDriverCardCacheFile.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B06151B213300744229 /* MiniDriverCardCacheFile.hpp */; };
+		1FED4B95151B213400744229 /* MiniDriverContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B07151B213300744229 /* MiniDriverContainer.cpp */; };
+		1FED4B96151B213400744229 /* MiniDriverContainer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B08151B213300744229 /* MiniDriverContainer.hpp */; };
+		1FED4B97151B213400744229 /* MiniDriverContainerMapFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B09151B213300744229 /* MiniDriverContainerMapFile.cpp */; };
+		1FED4B98151B213400744229 /* MiniDriverContainerMapFile.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B0A151B213300744229 /* MiniDriverContainerMapFile.hpp */; };
+		1FED4B99151B213400744229 /* MiniDriverException.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B0B151B213300744229 /* MiniDriverException.hpp */; };
+		1FED4B9A151B213400744229 /* MiniDriverFiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B0C151B213300744229 /* MiniDriverFiles.cpp */; };
+		1FED4B9B151B213400744229 /* MiniDriverFiles.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B0D151B213300744229 /* MiniDriverFiles.hpp */; };
+		1FED4B9C151B213400744229 /* MiniDriverPinPolicy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B0E151B213300744229 /* MiniDriverPinPolicy.cpp */; };
+		1FED4B9D151B213400744229 /* MiniDriverPinPolicy.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B0F151B213300744229 /* MiniDriverPinPolicy.hpp */; };
+		1FED4B9F151B213400744229 /* pbbase.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B11151B213300744229 /* pbbase.h */; };
+		1FED4BA0151B213400744229 /* PCSC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B12151B213300744229 /* PCSC.cpp */; };
+		1FED4BA1151B213400744229 /* PCSC.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B13151B213300744229 /* PCSC.h */; };
+		1FED4BA2151B213400744229 /* PCSCMissing.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B14151B213300744229 /* PCSCMissing.h */; };
+		1FED4BA3151B213400744229 /* pkcs-11v2-20a3.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B15151B213300744229 /* pkcs-11v2-20a3.h */; };
+		1FED4BA4151B213400744229 /* PKCS11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B16151B213300744229 /* PKCS11.cpp */; };
+		1FED4BA5151B213400744229 /* pkcs11.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B17151B213300744229 /* pkcs11.h */; };
+		1FED4BA6151B213400744229 /* PKCS11Exception.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B18151B213300744229 /* PKCS11Exception.hpp */; };
+		1FED4BA7151B213400744229 /* pkcs11f.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B19151B213300744229 /* pkcs11f.h */; };
+		1FED4BAA151B213400744229 /* Pkcs11ObjectCertificate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B28151B213300744229 /* Pkcs11ObjectCertificate.cpp */; };
+		1FED4BAB151B213400744229 /* Pkcs11ObjectCertificate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B29151B213300744229 /* Pkcs11ObjectCertificate.hpp */; };
+		1FED4BAC151B213400744229 /* Pkcs11ObjectCertificateX509PublicKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B2A151B213300744229 /* Pkcs11ObjectCertificateX509PublicKey.cpp */; };
+		1FED4BAD151B213400744229 /* Pkcs11ObjectCertificateX509PublicKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B2B151B213300744229 /* Pkcs11ObjectCertificateX509PublicKey.hpp */; };
+		1FED4BAE151B213400744229 /* Pkcs11ObjectData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B2C151B213300744229 /* Pkcs11ObjectData.cpp */; };
+		1FED4BAF151B213400744229 /* Pkcs11ObjectData.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B2D151B213300744229 /* Pkcs11ObjectData.hpp */; };
+		1FED4BB0151B213400744229 /* Pkcs11ObjectKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B2E151B213300744229 /* Pkcs11ObjectKey.cpp */; };
+		1FED4BB1151B213400744229 /* Pkcs11ObjectKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B2F151B213300744229 /* Pkcs11ObjectKey.hpp */; };
+		1FED4BB2151B213400744229 /* Pkcs11ObjectKeyPrivate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B30151B213300744229 /* Pkcs11ObjectKeyPrivate.cpp */; };
+		1FED4BB3151B213400744229 /* Pkcs11ObjectKeyPrivate.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B31151B213300744229 /* Pkcs11ObjectKeyPrivate.hpp */; };
+		1FED4BB4151B213400744229 /* Pkcs11ObjectKeyPrivateRSA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B32151B213300744229 /* Pkcs11ObjectKeyPrivateRSA.cpp */; };
+		1FED4BB5151B213400744229 /* Pkcs11ObjectKeyPrivateRSA.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B33151B213300744229 /* Pkcs11ObjectKeyPrivateRSA.hpp */; };
+		1FED4BB6151B213400744229 /* Pkcs11ObjectKeyPublic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B34151B213300744229 /* Pkcs11ObjectKeyPublic.cpp */; };
+		1FED4BB7151B213400744229 /* Pkcs11ObjectKeyPublic.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B35151B213300744229 /* Pkcs11ObjectKeyPublic.hpp */; };
+		1FED4BB8151B213400744229 /* Pkcs11ObjectKeyPublicRSA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B36151B213300744229 /* Pkcs11ObjectKeyPublicRSA.cpp */; };
+		1FED4BB9151B213400744229 /* Pkcs11ObjectKeyPublicRSA.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B37151B213300744229 /* Pkcs11ObjectKeyPublicRSA.hpp */; };
+		1FED4BBA151B213400744229 /* Pkcs11ObjectStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B38151B213300744229 /* Pkcs11ObjectStorage.cpp */; };
+		1FED4BBB151B213400744229 /* Pkcs11ObjectStorage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B39151B213300744229 /* Pkcs11ObjectStorage.hpp */; };
+		1FED4BBC151B213400744229 /* pkcs11t.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B3A151B213300744229 /* pkcs11t.h */; };
+		1FED4BBD151B213400744229 /* Session.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B3B151B213300744229 /* Session.cpp */; };
+		1FED4BBE151B213400744229 /* Session.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B3C151B213300744229 /* Session.hpp */; };
+		1FED4BBF151B213400744229 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B3D151B213300744229 /* sha1.h */; };
+		1FED4BC0151B213400744229 /* sha256.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B3E151B213300744229 /* sha256.h */; };
+		1FED4BC1151B213400744229 /* Slot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B3F151B213300744229 /* Slot.cpp */; };
+		1FED4BC2151B213400744229 /* Slot.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B40151B213300744229 /* Slot.hpp */; };
+		1FED4BC3151B213400744229 /* SmartCardReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B41151B213300744229 /* SmartCardReader.cpp */; };
+		1FED4BC4151B213400744229 /* SmartCardReader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B42151B213300744229 /* SmartCardReader.hpp */; };
+		1FED4BC5151B213400744229 /* SmartCardReaderException.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B43151B213300744229 /* SmartCardReaderException.hpp */; };
+		1FED4BC6151B213400744229 /* symmalgo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B44151B213300744229 /* symmalgo.cpp */; };
+		1FED4BC7151B213400744229 /* symmalgo.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B45151B213300744229 /* symmalgo.h */; };
+		1FED4BC8151B213400744229 /* tdes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B46151B213300744229 /* tdes.cpp */; };
+		1FED4BC9151B213400744229 /* tdes.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B47151B213300744229 /* tdes.h */; };
+		1FED4BCA151B213400744229 /* Template.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B48151B213300744229 /* Template.cpp */; };
+		1FED4BCB151B213400744229 /* Template.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B49151B213300744229 /* Template.hpp */; };
+		1FED4BCC151B213400744229 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B4A151B213300744229 /* Timer.cpp */; };
+		1FED4BCD151B213400744229 /* Timer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B4B151B213300744229 /* Timer.hpp */; };
+		1FED4BCE151B213400744229 /* Token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B4C151B213300744229 /* Token.cpp */; };
+		1FED4BCF151B213400744229 /* Token.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B4D151B213300744229 /* Token.hpp */; };
+		1FED4BD0151B213400744229 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B4E151B213300744229 /* util.cpp */; };
+		1FED4BD1151B213400744229 /* util.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B4F151B213300744229 /* util.h */; };
+		1FED4BD2151B213400744229 /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B50151B213300744229 /* version.hpp */; };
+		1FED4BD3151B213400744229 /* x509cert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FED4B51151B213300744229 /* x509cert.cpp */; };
+		1FED4BD4151B213400744229 /* x509cert.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FED4B52151B213300744229 /* x509cert.h */; };
+		1FED4BDD151B22A300744229 /* libboost_date_time.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FED4BD8151B22A300744229 /* libboost_date_time.a */; };
+		1FED4BDE151B22A300744229 /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FED4BD9151B22A300744229 /* libboost_filesystem.a */; };
+		1FED4BDF151B22A300744229 /* libboost_serialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FED4BDA151B22A300744229 /* libboost_serialization.a */; };
+		1FED4BE0151B22A300744229 /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FED4BDB151B22A300744229 /* libboost_system.a */; };
+		1FED4BE1151B22A300744229 /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FED4BDC151B22A300744229 /* libboost_thread.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1FB0484A10DA8A230011231D /* PCSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PCSC.framework; path = System/Library/Frameworks/PCSC.framework; sourceTree = SDKROOT; };
+		1FB0489910DA8CD90011231D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = /usr/lib/libz.dylib; sourceTree = "<absolute>"; };
+		1FED4A97151B213300744229 /* algo_des.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = algo_des.cpp; sourceTree = "<group>"; };
+		1FED4A98151B213300744229 /* algo_des.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algo_des.h; sourceTree = "<group>"; };
+		1FED4A99151B213300744229 /* algo_md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = algo_md5.cpp; sourceTree = "<group>"; };
+		1FED4A9A151B213300744229 /* algo_md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algo_md5.h; sourceTree = "<group>"; };
+		1FED4A9B151B213300744229 /* algo_sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = algo_sha1.cpp; sourceTree = "<group>"; };
+		1FED4A9C151B213300744229 /* algo_sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algo_sha1.h; sourceTree = "<group>"; };
+		1FED4A9D151B213300744229 /* algo_sha256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = algo_sha256.cpp; sourceTree = "<group>"; };
+		1FED4A9E151B213300744229 /* algo_sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algo_sha256.h; sourceTree = "<group>"; };
+		1FED4A9F151B213300744229 /* algo_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = algo_utils.cpp; sourceTree = "<group>"; };
+		1FED4AA0151B213300744229 /* algo_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algo_utils.h; sourceTree = "<group>"; };
+		1FED4AA1151B213300744229 /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
+		1FED4AA2151B213300744229 /* Application.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Application.hpp; sourceTree = "<group>"; };
+		1FED4AA3151B213300744229 /* Array.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Array.cpp; sourceTree = "<group>"; };
+		1FED4AA4151B213300744229 /* Array.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Array.hpp; sourceTree = "<group>"; };
+		1FED4AA5151B213300744229 /* attrcert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attrcert.cpp; sourceTree = "<group>"; };
+		1FED4AA6151B213300744229 /* attrcert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attrcert.h; sourceTree = "<group>"; };
+		1FED4AA8151B213300744229 /* beroctet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = beroctet.cpp; sourceTree = "<group>"; };
+		1FED4AA9151B213300744229 /* beroctet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beroctet.h; sourceTree = "<group>"; };
+		1FED4AAB151B213300744229 /* cardmod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cardmod.h; sourceTree = "<group>"; };
+		1FED4AAC151B213300744229 /* CardModuleService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CardModuleService.cpp; sourceTree = "<group>"; };
+		1FED4AAD151B213300744229 /* CardModuleService.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CardModuleService.hpp; sourceTree = "<group>"; };
+		1FED4AAE151B213300744229 /* cert_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cert_utils.cpp; sourceTree = "<group>"; };
+		1FED4AAF151B213300744229 /* cert_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cert_utils.h; sourceTree = "<group>"; };
+		1FED4AB0151B213300744229 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		1FED4AB1151B213300744229 /* Configuration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Configuration.cpp; sourceTree = "<group>"; };
+		1FED4AB2151B213300744229 /* Configuration.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Configuration.hpp; sourceTree = "<group>"; };
+		1FED4AB8151B213300744229 /* cr_digit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cr_digit.cpp; sourceTree = "<group>"; };
+		1FED4AB9151B213300744229 /* cr_digit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cr_digit.h; sourceTree = "<group>"; };
+		1FED4ABA151B213300744229 /* cr_global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cr_global.h; sourceTree = "<group>"; };
+		1FED4ABB151B213300744229 /* cr_nn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cr_nn.cpp; sourceTree = "<group>"; };
+		1FED4ABC151B213300744229 /* cr_nn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cr_nn.h; sourceTree = "<group>"; };
+		1FED4ABD151B213300744229 /* cr_random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cr_random.cpp; sourceTree = "<group>"; };
+		1FED4ABE151B213300744229 /* cr_random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cr_random.h; sourceTree = "<group>"; };
+		1FED4ABF151B213300744229 /* cr_rsa.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cr_rsa.cpp; sourceTree = "<group>"; };
+		1FED4AC0151B213300744229 /* cr_rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cr_rsa.h; sourceTree = "<group>"; };
+		1FED4AC1151B213300744229 /* cryptoki.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cryptoki.h; sourceTree = "<group>"; };
+		1FED4AE8151B213300744229 /* des.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = des.cpp; sourceTree = "<group>"; };
+		1FED4AE9151B213300744229 /* des.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = des.h; sourceTree = "<group>"; };
+		1FED4AEA151B213300744229 /* Device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Device.cpp; sourceTree = "<group>"; };
+		1FED4AEB151B213300744229 /* Device.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Device.hpp; sourceTree = "<group>"; };
+		1FED4AEC151B213300744229 /* DeviceMonitor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeviceMonitor.cpp; sourceTree = "<group>"; };
+		1FED4AED151B213300744229 /* DeviceMonitor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DeviceMonitor.hpp; sourceTree = "<group>"; };
+		1FED4AEE151B213300744229 /* Digest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Digest.cpp; sourceTree = "<group>"; };
+		1FED4AEF151B213300744229 /* digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = digest.h; sourceTree = "<group>"; };
+		1FED4AF0151B213300744229 /* DigestMD5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DigestMD5.cpp; sourceTree = "<group>"; };
+		1FED4AF1151B213300744229 /* DigestSHA1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DigestSHA1.cpp; sourceTree = "<group>"; };
+		1FED4AF2151B213300744229 /* DigestSHA256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DigestSHA256.cpp; sourceTree = "<group>"; };
+		1FED4AF3151B213300744229 /* Except.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Except.h; sourceTree = "<group>"; };
+		1FED4AF5151B213300744229 /* ha_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ha_config.h; sourceTree = "<group>"; };
+		1FED4AF6151B213300744229 /* IDeviceMonitorListener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IDeviceMonitorListener.hpp; sourceTree = "<group>"; };
+		1FED4AF8151B213300744229 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
+		1FED4AF9151B213300744229 /* Log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Log.hpp; sourceTree = "<group>"; };
+		1FED4AFB151B213300744229 /* Marshaller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Marshaller.cpp; sourceTree = "<group>"; };
+		1FED4AFC151B213300744229 /* Marshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marshaller.h; sourceTree = "<group>"; };
+		1FED4AFD151B213300744229 /* MarshallerCfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarshallerCfg.h; sourceTree = "<group>"; };
+		1FED4AFE151B213300744229 /* MarshallerUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MarshallerUtil.cpp; sourceTree = "<group>"; };
+		1FED4AFF151B213300744229 /* MarshallerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarshallerUtil.h; sourceTree = "<group>"; };
+		1FED4B00151B213300744229 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		1FED4B01151B213300744229 /* MiniDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MiniDriver.cpp; sourceTree = "<group>"; };
+		1FED4B02151B213300744229 /* MiniDriver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MiniDriver.hpp; sourceTree = "<group>"; };
+		1FED4B03151B213300744229 /* MiniDriverAuthentication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MiniDriverAuthentication.cpp; sourceTree = "<group>"; };
+		1FED4B04151B213300744229 /* MiniDriverAuthentication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MiniDriverAuthentication.hpp; sourceTree = "<group>"; };
+		1FED4B05151B213300744229 /* MiniDriverCardCacheFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MiniDriverCardCacheFile.cpp; sourceTree = "<group>"; };
+		1FED4B06151B213300744229 /* MiniDriverCardCacheFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MiniDriverCardCacheFile.hpp; sourceTree = "<group>"; };
+		1FED4B07151B213300744229 /* MiniDriverContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MiniDriverContainer.cpp; sourceTree = "<group>"; };
+		1FED4B08151B213300744229 /* MiniDriverContainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MiniDriverContainer.hpp; sourceTree = "<group>"; };
+		1FED4B09151B213300744229 /* MiniDriverContainerMapFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MiniDriverContainerMapFile.cpp; sourceTree = "<group>"; };
+		1FED4B0A151B213300744229 /* MiniDriverContainerMapFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MiniDriverContainerMapFile.hpp; sourceTree = "<group>"; };
+		1FED4B0B151B213300744229 /* MiniDriverException.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MiniDriverException.hpp; sourceTree = "<group>"; };
+		1FED4B0C151B213300744229 /* MiniDriverFiles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MiniDriverFiles.cpp; sourceTree = "<group>"; };
+		1FED4B0D151B213300744229 /* MiniDriverFiles.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MiniDriverFiles.hpp; sourceTree = "<group>"; };
+		1FED4B0E151B213300744229 /* MiniDriverPinPolicy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MiniDriverPinPolicy.cpp; sourceTree = "<group>"; };
+		1FED4B0F151B213300744229 /* MiniDriverPinPolicy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MiniDriverPinPolicy.hpp; sourceTree = "<group>"; };
+		1FED4B11151B213300744229 /* pbbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pbbase.h; sourceTree = "<group>"; };
+		1FED4B12151B213300744229 /* PCSC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PCSC.cpp; sourceTree = "<group>"; };
+		1FED4B13151B213300744229 /* PCSC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCSC.h; sourceTree = "<group>"; };
+		1FED4B14151B213300744229 /* PCSCMissing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCSCMissing.h; sourceTree = "<group>"; };
+		1FED4B15151B213300744229 /* pkcs-11v2-20a3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "pkcs-11v2-20a3.h"; sourceTree = "<group>"; };
+		1FED4B16151B213300744229 /* PKCS11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PKCS11.cpp; sourceTree = "<group>"; };
+		1FED4B17151B213300744229 /* pkcs11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs11.h; sourceTree = "<group>"; };
+		1FED4B18151B213300744229 /* PKCS11Exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PKCS11Exception.hpp; sourceTree = "<group>"; };
+		1FED4B19151B213300744229 /* pkcs11f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs11f.h; sourceTree = "<group>"; };
+		1FED4B28151B213300744229 /* Pkcs11ObjectCertificate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pkcs11ObjectCertificate.cpp; sourceTree = "<group>"; };
+		1FED4B29151B213300744229 /* Pkcs11ObjectCertificate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pkcs11ObjectCertificate.hpp; sourceTree = "<group>"; };
+		1FED4B2A151B213300744229 /* Pkcs11ObjectCertificateX509PublicKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pkcs11ObjectCertificateX509PublicKey.cpp; sourceTree = "<group>"; };
+		1FED4B2B151B213300744229 /* Pkcs11ObjectCertificateX509PublicKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pkcs11ObjectCertificateX509PublicKey.hpp; sourceTree = "<group>"; };
+		1FED4B2C151B213300744229 /* Pkcs11ObjectData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pkcs11ObjectData.cpp; sourceTree = "<group>"; };
+		1FED4B2D151B213300744229 /* Pkcs11ObjectData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pkcs11ObjectData.hpp; sourceTree = "<group>"; };
+		1FED4B2E151B213300744229 /* Pkcs11ObjectKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pkcs11ObjectKey.cpp; sourceTree = "<group>"; };
+		1FED4B2F151B213300744229 /* Pkcs11ObjectKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pkcs11ObjectKey.hpp; sourceTree = "<group>"; };
+		1FED4B30151B213300744229 /* Pkcs11ObjectKeyPrivate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pkcs11ObjectKeyPrivate.cpp; sourceTree = "<group>"; };
+		1FED4B31151B213300744229 /* Pkcs11ObjectKeyPrivate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pkcs11ObjectKeyPrivate.hpp; sourceTree = "<group>"; };
+		1FED4B32151B213300744229 /* Pkcs11ObjectKeyPrivateRSA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pkcs11ObjectKeyPrivateRSA.cpp; sourceTree = "<group>"; };
+		1FED4B33151B213300744229 /* Pkcs11ObjectKeyPrivateRSA.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pkcs11ObjectKeyPrivateRSA.hpp; sourceTree = "<group>"; };
+		1FED4B34151B213300744229 /* Pkcs11ObjectKeyPublic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pkcs11ObjectKeyPublic.cpp; sourceTree = "<group>"; };
+		1FED4B35151B213300744229 /* Pkcs11ObjectKeyPublic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pkcs11ObjectKeyPublic.hpp; sourceTree = "<group>"; };
+		1FED4B36151B213300744229 /* Pkcs11ObjectKeyPublicRSA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pkcs11ObjectKeyPublicRSA.cpp; sourceTree = "<group>"; };
+		1FED4B37151B213300744229 /* Pkcs11ObjectKeyPublicRSA.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pkcs11ObjectKeyPublicRSA.hpp; sourceTree = "<group>"; };
+		1FED4B38151B213300744229 /* Pkcs11ObjectStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pkcs11ObjectStorage.cpp; sourceTree = "<group>"; };
+		1FED4B39151B213300744229 /* Pkcs11ObjectStorage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pkcs11ObjectStorage.hpp; sourceTree = "<group>"; };
+		1FED4B3A151B213300744229 /* pkcs11t.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs11t.h; sourceTree = "<group>"; };
+		1FED4B3B151B213300744229 /* Session.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Session.cpp; sourceTree = "<group>"; };
+		1FED4B3C151B213300744229 /* Session.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Session.hpp; sourceTree = "<group>"; };
+		1FED4B3D151B213300744229 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		1FED4B3E151B213300744229 /* sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha256.h; sourceTree = "<group>"; };
+		1FED4B3F151B213300744229 /* Slot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Slot.cpp; sourceTree = "<group>"; };
+		1FED4B40151B213300744229 /* Slot.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Slot.hpp; sourceTree = "<group>"; };
+		1FED4B41151B213300744229 /* SmartCardReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmartCardReader.cpp; sourceTree = "<group>"; };
+		1FED4B42151B213300744229 /* SmartCardReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SmartCardReader.hpp; sourceTree = "<group>"; };
+		1FED4B43151B213300744229 /* SmartCardReaderException.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SmartCardReaderException.hpp; sourceTree = "<group>"; };
+		1FED4B44151B213300744229 /* symmalgo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = symmalgo.cpp; sourceTree = "<group>"; };
+		1FED4B45151B213300744229 /* symmalgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = symmalgo.h; sourceTree = "<group>"; };
+		1FED4B46151B213300744229 /* tdes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tdes.cpp; sourceTree = "<group>"; };
+		1FED4B47151B213300744229 /* tdes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tdes.h; sourceTree = "<group>"; };
+		1FED4B48151B213300744229 /* Template.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Template.cpp; sourceTree = "<group>"; };
+		1FED4B49151B213300744229 /* Template.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Template.hpp; sourceTree = "<group>"; };
+		1FED4B4A151B213300744229 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		1FED4B4B151B213300744229 /* Timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
+		1FED4B4C151B213300744229 /* Token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Token.cpp; sourceTree = "<group>"; };
+		1FED4B4D151B213300744229 /* Token.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Token.hpp; sourceTree = "<group>"; };
+		1FED4B4E151B213300744229 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
+		1FED4B4F151B213300744229 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		1FED4B50151B213300744229 /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
+		1FED4B51151B213300744229 /* x509cert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = x509cert.cpp; sourceTree = "<group>"; };
+		1FED4B52151B213300744229 /* x509cert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509cert.h; sourceTree = "<group>"; };
+		1FED4BD8151B22A300744229 /* libboost_date_time.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_date_time.a; path = ../../../../../../../../../usr/local/lib/libboost_date_time.a; sourceTree = "<group>"; };
+		1FED4BD9151B22A300744229 /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../../../../../../../../usr/local/lib/libboost_filesystem.a; sourceTree = "<group>"; };
+		1FED4BDA151B22A300744229 /* libboost_serialization.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_serialization.a; path = ../../../../../../../../../usr/local/lib/libboost_serialization.a; sourceTree = "<group>"; };
+		1FED4BDB151B22A300744229 /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../../../../../usr/local/lib/libboost_system.a; sourceTree = "<group>"; };
+		1FED4BDC151B22A300744229 /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = ../../../../../../../../../usr/local/lib/libboost_thread.a; sourceTree = "<group>"; };
+		D2AAC0630554660B00DB518D /* libPKCS11dotNetV2.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libPKCS11dotNetV2.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D289988505E68E00004EDB86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FED4BDD151B22A300744229 /* libboost_date_time.a in Frameworks */,
+				1FED4BDE151B22A300744229 /* libboost_filesystem.a in Frameworks */,
+				1FED4BDF151B22A300744229 /* libboost_serialization.a in Frameworks */,
+				1FED4BE0151B22A300744229 /* libboost_system.a in Frameworks */,
+				1FED4BE1151B22A300744229 /* libboost_thread.a in Frameworks */,
+				1FB0484B10DA8A230011231D /* PCSC.framework in Frameworks */,
+				1FB0489A10DA8CD90011231D /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* PKCS11dotNetV2 */ = {
+			isa = PBXGroup;
+			children = (
+				1FED4BD8151B22A300744229 /* libboost_date_time.a */,
+				1FED4BD9151B22A300744229 /* libboost_filesystem.a */,
+				1FED4BDA151B22A300744229 /* libboost_serialization.a */,
+				1FED4BDB151B22A300744229 /* libboost_system.a */,
+				1FED4BDC151B22A300744229 /* libboost_thread.a */,
+				1FB0489910DA8CD90011231D /* libz.dylib */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+				1FB0484A10DA8A230011231D /* PCSC.framework */,
+			);
+			name = PKCS11dotNetV2;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				1FED4A97151B213300744229 /* algo_des.cpp */,
+				1FED4A98151B213300744229 /* algo_des.h */,
+				1FED4A99151B213300744229 /* algo_md5.cpp */,
+				1FED4A9A151B213300744229 /* algo_md5.h */,
+				1FED4A9B151B213300744229 /* algo_sha1.cpp */,
+				1FED4A9C151B213300744229 /* algo_sha1.h */,
+				1FED4A9D151B213300744229 /* algo_sha256.cpp */,
+				1FED4A9E151B213300744229 /* algo_sha256.h */,
+				1FED4A9F151B213300744229 /* algo_utils.cpp */,
+				1FED4AA0151B213300744229 /* algo_utils.h */,
+				1FED4AA1151B213300744229 /* Application.cpp */,
+				1FED4AA2151B213300744229 /* Application.hpp */,
+				1FED4AA3151B213300744229 /* Array.cpp */,
+				1FED4AA4151B213300744229 /* Array.hpp */,
+				1FED4AA5151B213300744229 /* attrcert.cpp */,
+				1FED4AA6151B213300744229 /* attrcert.h */,
+				1FED4AA8151B213300744229 /* beroctet.cpp */,
+				1FED4AA9151B213300744229 /* beroctet.h */,
+				1FED4AAB151B213300744229 /* cardmod.h */,
+				1FED4AAC151B213300744229 /* CardModuleService.cpp */,
+				1FED4AAD151B213300744229 /* CardModuleService.hpp */,
+				1FED4AAE151B213300744229 /* cert_utils.cpp */,
+				1FED4AAF151B213300744229 /* cert_utils.h */,
+				1FED4AB0151B213300744229 /* config.h */,
+				1FED4AB1151B213300744229 /* Configuration.cpp */,
+				1FED4AB2151B213300744229 /* Configuration.hpp */,
+				1FED4AB8151B213300744229 /* cr_digit.cpp */,
+				1FED4AB9151B213300744229 /* cr_digit.h */,
+				1FED4ABA151B213300744229 /* cr_global.h */,
+				1FED4ABB151B213300744229 /* cr_nn.cpp */,
+				1FED4ABC151B213300744229 /* cr_nn.h */,
+				1FED4ABD151B213300744229 /* cr_random.cpp */,
+				1FED4ABE151B213300744229 /* cr_random.h */,
+				1FED4ABF151B213300744229 /* cr_rsa.cpp */,
+				1FED4AC0151B213300744229 /* cr_rsa.h */,
+				1FED4AC1151B213300744229 /* cryptoki.h */,
+				1FED4AE8151B213300744229 /* des.cpp */,
+				1FED4AE9151B213300744229 /* des.h */,
+				1FED4AEA151B213300744229 /* Device.cpp */,
+				1FED4AEB151B213300744229 /* Device.hpp */,
+				1FED4AEC151B213300744229 /* DeviceMonitor.cpp */,
+				1FED4AED151B213300744229 /* DeviceMonitor.hpp */,
+				1FED4AEE151B213300744229 /* Digest.cpp */,
+				1FED4AEF151B213300744229 /* digest.h */,
+				1FED4AF0151B213300744229 /* DigestMD5.cpp */,
+				1FED4AF1151B213300744229 /* DigestSHA1.cpp */,
+				1FED4AF2151B213300744229 /* DigestSHA256.cpp */,
+				1FED4AF3151B213300744229 /* Except.h */,
+				1FED4AF5151B213300744229 /* ha_config.h */,
+				1FED4AF6151B213300744229 /* IDeviceMonitorListener.hpp */,
+				1FED4AF8151B213300744229 /* Log.cpp */,
+				1FED4AF9151B213300744229 /* Log.hpp */,
+				1FED4AFB151B213300744229 /* Marshaller.cpp */,
+				1FED4AFC151B213300744229 /* Marshaller.h */,
+				1FED4AFD151B213300744229 /* MarshallerCfg.h */,
+				1FED4AFE151B213300744229 /* MarshallerUtil.cpp */,
+				1FED4AFF151B213300744229 /* MarshallerUtil.h */,
+				1FED4B00151B213300744229 /* md5.h */,
+				1FED4B01151B213300744229 /* MiniDriver.cpp */,
+				1FED4B02151B213300744229 /* MiniDriver.hpp */,
+				1FED4B03151B213300744229 /* MiniDriverAuthentication.cpp */,
+				1FED4B04151B213300744229 /* MiniDriverAuthentication.hpp */,
+				1FED4B05151B213300744229 /* MiniDriverCardCacheFile.cpp */,
+				1FED4B06151B213300744229 /* MiniDriverCardCacheFile.hpp */,
+				1FED4B07151B213300744229 /* MiniDriverContainer.cpp */,
+				1FED4B08151B213300744229 /* MiniDriverContainer.hpp */,
+				1FED4B09151B213300744229 /* MiniDriverContainerMapFile.cpp */,
+				1FED4B0A151B213300744229 /* MiniDriverContainerMapFile.hpp */,
+				1FED4B0B151B213300744229 /* MiniDriverException.hpp */,
+				1FED4B0C151B213300744229 /* MiniDriverFiles.cpp */,
+				1FED4B0D151B213300744229 /* MiniDriverFiles.hpp */,
+				1FED4B0E151B213300744229 /* MiniDriverPinPolicy.cpp */,
+				1FED4B0F151B213300744229 /* MiniDriverPinPolicy.hpp */,
+				1FED4B11151B213300744229 /* pbbase.h */,
+				1FED4B12151B213300744229 /* PCSC.cpp */,
+				1FED4B13151B213300744229 /* PCSC.h */,
+				1FED4B14151B213300744229 /* PCSCMissing.h */,
+				1FED4B15151B213300744229 /* pkcs-11v2-20a3.h */,
+				1FED4B16151B213300744229 /* PKCS11.cpp */,
+				1FED4B17151B213300744229 /* pkcs11.h */,
+				1FED4B18151B213300744229 /* PKCS11Exception.hpp */,
+				1FED4B19151B213300744229 /* pkcs11f.h */,
+				1FED4B28151B213300744229 /* Pkcs11ObjectCertificate.cpp */,
+				1FED4B29151B213300744229 /* Pkcs11ObjectCertificate.hpp */,
+				1FED4B2A151B213300744229 /* Pkcs11ObjectCertificateX509PublicKey.cpp */,
+				1FED4B2B151B213300744229 /* Pkcs11ObjectCertificateX509PublicKey.hpp */,
+				1FED4B2C151B213300744229 /* Pkcs11ObjectData.cpp */,
+				1FED4B2D151B213300744229 /* Pkcs11ObjectData.hpp */,
+				1FED4B2E151B213300744229 /* Pkcs11ObjectKey.cpp */,
+				1FED4B2F151B213300744229 /* Pkcs11ObjectKey.hpp */,
+				1FED4B30151B213300744229 /* Pkcs11ObjectKeyPrivate.cpp */,
+				1FED4B31151B213300744229 /* Pkcs11ObjectKeyPrivate.hpp */,
+				1FED4B32151B213300744229 /* Pkcs11ObjectKeyPrivateRSA.cpp */,
+				1FED4B33151B213300744229 /* Pkcs11ObjectKeyPrivateRSA.hpp */,
+				1FED4B34151B213300744229 /* Pkcs11ObjectKeyPublic.cpp */,
+				1FED4B35151B213300744229 /* Pkcs11ObjectKeyPublic.hpp */,
+				1FED4B36151B213300744229 /* Pkcs11ObjectKeyPublicRSA.cpp */,
+				1FED4B37151B213300744229 /* Pkcs11ObjectKeyPublicRSA.hpp */,
+				1FED4B38151B213300744229 /* Pkcs11ObjectStorage.cpp */,
+				1FED4B39151B213300744229 /* Pkcs11ObjectStorage.hpp */,
+				1FED4B3A151B213300744229 /* pkcs11t.h */,
+				1FED4B3B151B213300744229 /* Session.cpp */,
+				1FED4B3C151B213300744229 /* Session.hpp */,
+				1FED4B3D151B213300744229 /* sha1.h */,
+				1FED4B3E151B213300744229 /* sha256.h */,
+				1FED4B3F151B213300744229 /* Slot.cpp */,
+				1FED4B40151B213300744229 /* Slot.hpp */,
+				1FED4B41151B213300744229 /* SmartCardReader.cpp */,
+				1FED4B42151B213300744229 /* SmartCardReader.hpp */,
+				1FED4B43151B213300744229 /* SmartCardReaderException.hpp */,
+				1FED4B44151B213300744229 /* symmalgo.cpp */,
+				1FED4B45151B213300744229 /* symmalgo.h */,
+				1FED4B46151B213300744229 /* tdes.cpp */,
+				1FED4B47151B213300744229 /* tdes.h */,
+				1FED4B48151B213300744229 /* Template.cpp */,
+				1FED4B49151B213300744229 /* Template.hpp */,
+				1FED4B4A151B213300744229 /* Timer.cpp */,
+				1FED4B4B151B213300744229 /* Timer.hpp */,
+				1FED4B4C151B213300744229 /* Token.cpp */,
+				1FED4B4D151B213300744229 /* Token.hpp */,
+				1FED4B4E151B213300744229 /* util.cpp */,
+				1FED4B4F151B213300744229 /* util.h */,
+				1FED4B50151B213300744229 /* version.hpp */,
+				1FED4B51151B213300744229 /* x509cert.cpp */,
+				1FED4B52151B213300744229 /* x509cert.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC0630554660B00DB518D /* libPKCS11dotNetV2.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC0600554660B00DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FED4B54151B213400744229 /* algo_des.h in Headers */,
+				1FED4B56151B213400744229 /* algo_md5.h in Headers */,
+				1FED4B58151B213400744229 /* algo_sha1.h in Headers */,
+				1FED4B5A151B213400744229 /* algo_sha256.h in Headers */,
+				1FED4B5C151B213400744229 /* algo_utils.h in Headers */,
+				1FED4B5E151B213400744229 /* Application.hpp in Headers */,
+				1FED4B60151B213400744229 /* Array.hpp in Headers */,
+				1FED4B62151B213400744229 /* attrcert.h in Headers */,
+				1FED4B64151B213400744229 /* beroctet.h in Headers */,
+				1FED4B65151B213400744229 /* cardmod.h in Headers */,
+				1FED4B67151B213400744229 /* CardModuleService.hpp in Headers */,
+				1FED4B69151B213400744229 /* cert_utils.h in Headers */,
+				1FED4B6A151B213400744229 /* config.h in Headers */,
+				1FED4B6C151B213400744229 /* Configuration.hpp in Headers */,
+				1FED4B70151B213400744229 /* cr_digit.h in Headers */,
+				1FED4B71151B213400744229 /* cr_global.h in Headers */,
+				1FED4B73151B213400744229 /* cr_nn.h in Headers */,
+				1FED4B75151B213400744229 /* cr_random.h in Headers */,
+				1FED4B77151B213400744229 /* cr_rsa.h in Headers */,
+				1FED4B78151B213400744229 /* cryptoki.h in Headers */,
+				1FED4B7A151B213400744229 /* des.h in Headers */,
+				1FED4B7C151B213400744229 /* Device.hpp in Headers */,
+				1FED4B7E151B213400744229 /* DeviceMonitor.hpp in Headers */,
+				1FED4B80151B213400744229 /* digest.h in Headers */,
+				1FED4B84151B213400744229 /* Except.h in Headers */,
+				1FED4B85151B213400744229 /* ha_config.h in Headers */,
+				1FED4B86151B213400744229 /* IDeviceMonitorListener.hpp in Headers */,
+				1FED4B88151B213400744229 /* Log.hpp in Headers */,
+				1FED4B8A151B213400744229 /* Marshaller.h in Headers */,
+				1FED4B8B151B213400744229 /* MarshallerCfg.h in Headers */,
+				1FED4B8D151B213400744229 /* MarshallerUtil.h in Headers */,
+				1FED4B8E151B213400744229 /* md5.h in Headers */,
+				1FED4B90151B213400744229 /* MiniDriver.hpp in Headers */,
+				1FED4B92151B213400744229 /* MiniDriverAuthentication.hpp in Headers */,
+				1FED4B94151B213400744229 /* MiniDriverCardCacheFile.hpp in Headers */,
+				1FED4B96151B213400744229 /* MiniDriverContainer.hpp in Headers */,
+				1FED4B98151B213400744229 /* MiniDriverContainerMapFile.hpp in Headers */,
+				1FED4B99151B213400744229 /* MiniDriverException.hpp in Headers */,
+				1FED4B9B151B213400744229 /* MiniDriverFiles.hpp in Headers */,
+				1FED4B9D151B213400744229 /* MiniDriverPinPolicy.hpp in Headers */,
+				1FED4B9F151B213400744229 /* pbbase.h in Headers */,
+				1FED4BA1151B213400744229 /* PCSC.h in Headers */,
+				1FED4BA2151B213400744229 /* PCSCMissing.h in Headers */,
+				1FED4BA3151B213400744229 /* pkcs-11v2-20a3.h in Headers */,
+				1FED4BA5151B213400744229 /* pkcs11.h in Headers */,
+				1FED4BA6151B213400744229 /* PKCS11Exception.hpp in Headers */,
+				1FED4BA7151B213400744229 /* pkcs11f.h in Headers */,
+				1FED4BAB151B213400744229 /* Pkcs11ObjectCertificate.hpp in Headers */,
+				1FED4BAD151B213400744229 /* Pkcs11ObjectCertificateX509PublicKey.hpp in Headers */,
+				1FED4BAF151B213400744229 /* Pkcs11ObjectData.hpp in Headers */,
+				1FED4BB1151B213400744229 /* Pkcs11ObjectKey.hpp in Headers */,
+				1FED4BB3151B213400744229 /* Pkcs11ObjectKeyPrivate.hpp in Headers */,
+				1FED4BB5151B213400744229 /* Pkcs11ObjectKeyPrivateRSA.hpp in Headers */,
+				1FED4BB7151B213400744229 /* Pkcs11ObjectKeyPublic.hpp in Headers */,
+				1FED4BB9151B213400744229 /* Pkcs11ObjectKeyPublicRSA.hpp in Headers */,
+				1FED4BBB151B213400744229 /* Pkcs11ObjectStorage.hpp in Headers */,
+				1FED4BBC151B213400744229 /* pkcs11t.h in Headers */,
+				1FED4BBE151B213400744229 /* Session.hpp in Headers */,
+				1FED4BBF151B213400744229 /* sha1.h in Headers */,
+				1FED4BC0151B213400744229 /* sha256.h in Headers */,
+				1FED4BC2151B213400744229 /* Slot.hpp in Headers */,
+				1FED4BC4151B213400744229 /* SmartCardReader.hpp in Headers */,
+				1FED4BC5151B213400744229 /* SmartCardReaderException.hpp in Headers */,
+				1FED4BC7151B213400744229 /* symmalgo.h in Headers */,
+				1FED4BC9151B213400744229 /* tdes.h in Headers */,
+				1FED4BCB151B213400744229 /* Template.hpp in Headers */,
+				1FED4BCD151B213400744229 /* Timer.hpp in Headers */,
+				1FED4BCF151B213400744229 /* Token.hpp in Headers */,
+				1FED4BD1151B213400744229 /* util.h in Headers */,
+				1FED4BD2151B213400744229 /* version.hpp in Headers */,
+				1FED4BD4151B213400744229 /* x509cert.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC0620554660B00DB518D /* PKCS11dotNetV2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB914A08733D8E0010E9CD /* Build configuration list for PBXNativeTarget "PKCS11dotNetV2" */;
+			buildPhases = (
+				D2AAC0600554660B00DB518D /* Headers */,
+				D2AAC0610554660B00DB518D /* Sources */,
+				D289988505E68E00004EDB86 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PKCS11dotNetV2;
+			productName = PKCS11dotNetV2;
+			productReference = D2AAC0630554660B00DB518D /* libPKCS11dotNetV2.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 1DEB914E08733D8E0010E9CD /* Build configuration list for PBXProject "PKCS11dotNetV2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* PKCS11dotNetV2 */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC0620554660B00DB518D /* PKCS11dotNetV2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC0610554660B00DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FED4B53151B213400744229 /* algo_des.cpp in Sources */,
+				1FED4B55151B213400744229 /* algo_md5.cpp in Sources */,
+				1FED4B57151B213400744229 /* algo_sha1.cpp in Sources */,
+				1FED4B59151B213400744229 /* algo_sha256.cpp in Sources */,
+				1FED4B5B151B213400744229 /* algo_utils.cpp in Sources */,
+				1FED4B5D151B213400744229 /* Application.cpp in Sources */,
+				1FED4B5F151B213400744229 /* Array.cpp in Sources */,
+				1FED4B61151B213400744229 /* attrcert.cpp in Sources */,
+				1FED4B63151B213400744229 /* beroctet.cpp in Sources */,
+				1FED4B66151B213400744229 /* CardModuleService.cpp in Sources */,
+				1FED4B68151B213400744229 /* cert_utils.cpp in Sources */,
+				1FED4B6B151B213400744229 /* Configuration.cpp in Sources */,
+				1FED4B6F151B213400744229 /* cr_digit.cpp in Sources */,
+				1FED4B72151B213400744229 /* cr_nn.cpp in Sources */,
+				1FED4B74151B213400744229 /* cr_random.cpp in Sources */,
+				1FED4B76151B213400744229 /* cr_rsa.cpp in Sources */,
+				1FED4B79151B213400744229 /* des.cpp in Sources */,
+				1FED4B7B151B213400744229 /* Device.cpp in Sources */,
+				1FED4B7D151B213400744229 /* DeviceMonitor.cpp in Sources */,
+				1FED4B7F151B213400744229 /* Digest.cpp in Sources */,
+				1FED4B81151B213400744229 /* DigestMD5.cpp in Sources */,
+				1FED4B82151B213400744229 /* DigestSHA1.cpp in Sources */,
+				1FED4B83151B213400744229 /* DigestSHA256.cpp in Sources */,
+				1FED4B87151B213400744229 /* Log.cpp in Sources */,
+				1FED4B89151B213400744229 /* Marshaller.cpp in Sources */,
+				1FED4B8C151B213400744229 /* MarshallerUtil.cpp in Sources */,
+				1FED4B8F151B213400744229 /* MiniDriver.cpp in Sources */,
+				1FED4B91151B213400744229 /* MiniDriverAuthentication.cpp in Sources */,
+				1FED4B93151B213400744229 /* MiniDriverCardCacheFile.cpp in Sources */,
+				1FED4B95151B213400744229 /* MiniDriverContainer.cpp in Sources */,
+				1FED4B97151B213400744229 /* MiniDriverContainerMapFile.cpp in Sources */,
+				1FED4B9A151B213400744229 /* MiniDriverFiles.cpp in Sources */,
+				1FED4B9C151B213400744229 /* MiniDriverPinPolicy.cpp in Sources */,
+				1FED4BA0151B213400744229 /* PCSC.cpp in Sources */,
+				1FED4BA4151B213400744229 /* PKCS11.cpp in Sources */,
+				1FED4BAA151B213400744229 /* Pkcs11ObjectCertificate.cpp in Sources */,
+				1FED4BAC151B213400744229 /* Pkcs11ObjectCertificateX509PublicKey.cpp in Sources */,
+				1FED4BAE151B213400744229 /* Pkcs11ObjectData.cpp in Sources */,
+				1FED4BB0151B213400744229 /* Pkcs11ObjectKey.cpp in Sources */,
+				1FED4BB2151B213400744229 /* Pkcs11ObjectKeyPrivate.cpp in Sources */,
+				1FED4BB4151B213400744229 /* Pkcs11ObjectKeyPrivateRSA.cpp in Sources */,
+				1FED4BB6151B213400744229 /* Pkcs11ObjectKeyPublic.cpp in Sources */,
+				1FED4BB8151B213400744229 /* Pkcs11ObjectKeyPublicRSA.cpp in Sources */,
+				1FED4BBA151B213400744229 /* Pkcs11ObjectStorage.cpp in Sources */,
+				1FED4BBD151B213400744229 /* Session.cpp in Sources */,
+				1FED4BC1151B213400744229 /* Slot.cpp in Sources */,
+				1FED4BC3151B213400744229 /* SmartCardReader.cpp in Sources */,
+				1FED4BC6151B213400744229 /* symmalgo.cpp in Sources */,
+				1FED4BC8151B213400744229 /* tdes.cpp in Sources */,
+				1FED4BCA151B213400744229 /* Template.cpp in Sources */,
+				1FED4BCC151B213400744229 /* Timer.cpp in Sources */,
+				1FED4BCE151B213400744229 /* Token.cpp in Sources */,
+				1FED4BD0151B213400744229 /* util.cpp in Sources */,
+				1FED4BD3151B213400744229 /* x509cert.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB914B08733D8E0010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_PREFIX = lib;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = PKCS11dotNetV2;
+			};
+			name = Debug;
+		};
+		1DEB914C08733D8E0010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_PREFIX = lib;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = PKCS11dotNetV2;
+			};
+			name = Release;
+		};
+		1DEB914F08733D8E0010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				DEPLOYMENT_LOCATION = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DINCLUDE_EVENTING",
+					"$(OTHER_CFLAGS)",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1DEB915008733D8E0010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				DEPLOYMENT_LOCATION = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DINCLUDE_EVENTING",
+					"$(OTHER_CFLAGS)",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB914A08733D8E0010E9CD /* Build configuration list for PBXNativeTarget "PKCS11dotNetV2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB914B08733D8E0010E9CD /* Debug */,
+				1DEB914C08733D8E0010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB914E08733D8E0010E9CD /* Build configuration list for PBXProject "PKCS11dotNetV2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB914F08733D8E0010E9CD /* Debug */,
+				1DEB915008733D8E0010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
